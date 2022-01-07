@@ -1,10 +1,11 @@
 package entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "cabinet_medical")
-public class CabinetMedical {
+public class CabinetMedical implements Serializable {
     @Id
     @Column(name = "CABNum")
     private Integer cabNum;
@@ -59,5 +60,16 @@ public class CabinetMedical {
 
     public void setHoraires(String horaires) {
         this.horaires = horaires;
+    }
+
+    @Override
+    public String toString() {
+        return "CabinetMedical{" +
+                "cabNum=" + cabNum +
+                ", nom='" + nom + '\'' +
+                ", adresse='" + adresse + '\'' +
+                ", effectif=" + effectif +
+                ", horaires='" + horaires + '\'' +
+                '}';
     }
 }

@@ -5,7 +5,7 @@ import javax.swing.*;
 public class Window extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
-    private JButton buttonCancel;
+    private JLabel tableName;
 
     public Window() {
         setContentPane(contentPane);
@@ -18,5 +18,13 @@ public class Window extends JDialog {
         dialog.pack();
         dialog.setVisible(true);
         System.exit(0);
+    }
+
+    public JLabel getTableName() {
+        return this.tableName;
+    }
+
+    public void setTableName(JLabel tableName) {
+        this.tableName = tableName;
     }
 }

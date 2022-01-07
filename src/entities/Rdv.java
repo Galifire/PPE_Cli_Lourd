@@ -1,10 +1,11 @@
 package entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "rdv")
-public class Rdv {
+public class Rdv implements Serializable {
     @Id
     @Column(name = "MEDNum")
     private Integer medNum;
@@ -15,7 +16,7 @@ public class Rdv {
 
     @Id
     @Column(name = "DateRdv")
-    private java.sql.Date dateRdv;
+    private String dateRdv;
 
     @Column(name = "Heure")
     private java.sql.Time heure;
@@ -45,11 +46,11 @@ public class Rdv {
         this.cliNum = cliNum;
     }
 
-    public java.sql.Date getDateRdv() {
+    public String getDateRdv() {
         return this.dateRdv;
     }
 
-    public void setDateRdv(java.sql.Date dateRdv) {
+    public void setDateRdv(String dateRdv) {
         this.dateRdv = dateRdv;
     }
 

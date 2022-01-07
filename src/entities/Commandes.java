@@ -1,10 +1,11 @@
 package entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "commandes")
-public class Commandes {
+public class Commandes implements Serializable {
     @Id
     @Column(name = "CDENum")
     private Integer cdeNum;
@@ -19,7 +20,7 @@ public class Commandes {
 
     @Id
     @Column(name = "DateCde")
-    private java.sql.Date dateCde;
+    private String dateCde;
 
     @Column(name = "Qte")
     private Integer qte;
@@ -48,11 +49,11 @@ public class Commandes {
         this.medicCode = medicCode;
     }
 
-    public java.sql.Date getDateCde() {
+    public String getDateCde() {
         return this.dateCde;
     }
 
-    public void setDateCde(java.sql.Date dateCde) {
+    public void setDateCde(String dateCde) {
         this.dateCde = dateCde;
     }
 
