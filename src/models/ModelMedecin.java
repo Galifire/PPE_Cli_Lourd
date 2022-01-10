@@ -7,12 +7,21 @@ import java.util.HashSet;
 import java.util.List;
 
 public class ModelMedecin extends DefaultTableModel {
+
     List<Medecins> medecin;
     String[] colNames = {"MEDNum", "Nom", "Prenom", "Adresse", "Email", "Telephone", "CABNum"};
-    HashSet<Medecins> hashSet = new HashSet<>();
+    HashSet<Medecins> modified = new HashSet<>();
 
     public ModelMedecin(List<Medecins> medecin) {
         this.medecin = medecin;
+    }
+
+    public HashSet<Medecins> getModified() {
+        return this.modified;
+    }
+
+    public String[] getColNames() {
+        return this.colNames;
     }
 
     public int getRowCount() {
@@ -21,7 +30,7 @@ public class ModelMedecin extends DefaultTableModel {
 
     @Override
     public int getColumnCount() {
-        return (colNames.length +1);
+        return (colNames.length);
     }
 
     @Override
@@ -114,4 +123,5 @@ public class ModelMedecin extends DefaultTableModel {
         }
         return clazz;
     }
+
 }

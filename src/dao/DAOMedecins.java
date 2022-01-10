@@ -25,7 +25,6 @@ public class DAOMedecins extends DAOGeneric {
         List<CabinetMedical> cabinets = query.list();
         List<Medecins> medecins = null;
         for (CabinetMedical c : cabinets) {
-            System.out.println(c.getCabNum());
             String sqlMedecins = "SELECT * FROM medecins WHERE CABNum=:cabNum";
             SQLQuery queryMedecins = session.createSQLQuery(sqlMedecins);
             queryMedecins.setInteger("cabNum", c.getCabNum());

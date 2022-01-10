@@ -1,10 +1,10 @@
 package entities;
 
+import dao.DAOMedecins;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import utils.HibernateUtil;
 import utils.TestConnection;
-import dao.DAOMedecins;
 
 import javax.swing.*;
 import java.util.List;
@@ -16,15 +16,6 @@ public class App {
         t.init();
         SessionFactory sessFac = HibernateUtil.getSessionFactory();
         Session session = sessFac.openSession();
-        DAOMedecins daoCm = new DAOMedecins(session, Medecins.class);
-        Window window = new Window();
-        window.getTableName().setText(Medecins.class.toString());
-        List<Medecins> medecins = daoCm.showMedecinsFromCabinetByName("Lyon6");
-        /*for (Medecins m : medecins) {
-            System.out.println(m);
-        }*/
-        JTable table = new JTable(
-
-        );
+        new Controller(new Window(), new DAOMedecins(session, Medecins.class));
     }
 }

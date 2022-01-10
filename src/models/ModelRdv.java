@@ -21,7 +21,7 @@ public class ModelRdv extends DefaultTableModel {
 
     @Override
     public int getColumnCount() {
-        return (colNames.length +1);
+        return (colNames.length);
     }
 
     @Override
