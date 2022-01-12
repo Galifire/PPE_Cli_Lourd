@@ -1,13 +1,11 @@
 package entities;
 
-import dao.DAOMedecins;
+import controllers.WindowController;
+import controllers.LoggerController;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import utils.HibernateUtil;
 import utils.TestConnection;
-
-import javax.swing.*;
-import java.util.List;
 
 public class App {
 
@@ -16,6 +14,10 @@ public class App {
         t.init();
         SessionFactory sessFac = HibernateUtil.getSessionFactory();
         Session session = sessFac.openSession();
-        new Controller(new Window(), new DAOMedecins(session, Medecins.class));
+        Logger l = new Logger();
+        new LoggerController(l, session);
+        l.setSize(800,600);
+        l.setVisible(true);
+
     }
 }

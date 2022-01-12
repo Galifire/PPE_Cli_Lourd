@@ -10,23 +10,72 @@
       <component id="8ae35" class="javax.swing.JLabel" binding="tableName">
         <constraints border-constraint="North"/>
         <properties>
-          <text value="PPE Client Lourd"/>
+          <text value="Gest RDV"/>
         </properties>
       </component>
-      <grid id="fe04f" binding="tablePanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+      <grid id="c6cc" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
         <constraints border-constraint="Center"/>
         <properties/>
         <border type="none"/>
         <children>
-          <scrollpane id="654c6" binding="dataScrolLPane">
-            <constraints border-constraint="North"/>
+          <grid id="caec5" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
             <properties/>
             <border type="none"/>
-            <children/>
-          </scrollpane>
-          <component id="4dbdc" class="javax.swing.JTable" binding="dataTable">
-            <constraints border-constraint="Center"/>
+            <children>
+              <scrollpane id="672fb" binding="dataScrollPane">
+                <constraints/>
+                <properties/>
+                <border type="none"/>
+                <children/>
+              </scrollpane>
+            </children>
+          </grid>
+          <grid id="78df0" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
             <properties/>
+            <border type="none"/>
+            <children>
+              <component id="e7ebb" class="javax.swing.JComboBox" binding="tableBox">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <model>
+                    <item value=""/>
+                    <item value="CabinetMedical"/>
+                    <item value="Client"/>
+                    <item value="Commandes"/>
+                    <item value="Medecins"/>
+                    <item value="Medicaments"/>
+                    <item value="RDV"/>
+                    <item value="Stocks"/>
+                  </model>
+                </properties>
+              </component>
+              <component id="ffe06" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Sélectionnez la table :"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <component id="29f33" class="javax.swing.JLabel" binding="loggedLabel">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="5" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Label"/>
+            </properties>
           </component>
         </children>
       </grid>

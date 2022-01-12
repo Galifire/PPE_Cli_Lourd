@@ -4,7 +4,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Projections;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public abstract class DAOGeneric<E> {
 
@@ -33,8 +33,8 @@ public abstract class DAOGeneric<E> {
         session.getTransaction().commit();
     }
 
-    public List<E> findAll() {
-        return session.createQuery("FROM " + entityClass.getName()).list();
+    public ArrayList<E> findAll() {
+        return (ArrayList<E>) session.createQuery("FROM " + entityClass.getName()).list();
     }
 
     public long count() {

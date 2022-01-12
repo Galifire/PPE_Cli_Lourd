@@ -15,5 +15,7 @@
     <mapping class="entities.Medecins" />
     <mapping class="entities.Rdv" />
     <mapping class="entities.Stocks" />
+    <mapping class="entities.User" />
+    <mapping class="entities.Role" />
   </session-factory>
 </hibernate-configuration>

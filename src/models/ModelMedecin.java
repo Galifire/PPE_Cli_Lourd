@@ -4,15 +4,15 @@ import entities.Medecins;
 
 import javax.swing.table.DefaultTableModel;
 import java.util.HashSet;
-import java.util.List;
+import java.util.ArrayList;
 
 public class ModelMedecin extends DefaultTableModel {
 
-    List<Medecins> medecin;
+    ArrayList<Medecins> medecin;
     String[] colNames = {"MEDNum", "Nom", "Prenom", "Adresse", "Email", "Telephone", "CABNum"};
     HashSet<Medecins> modified = new HashSet<>();
 
-    public ModelMedecin(List<Medecins> medecin) {
+    public ModelMedecin(ArrayList<Medecins> medecin) {
         this.medecin = medecin;
     }
 
@@ -124,4 +124,8 @@ public class ModelMedecin extends DefaultTableModel {
         return clazz;
     }
 
+    @Override
+    public void insertRow(int row, Object[] rowData) {
+        super.insertRow(row, rowData);
+    }
 }

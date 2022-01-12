@@ -19,6 +19,10 @@ public class ModelStock extends DefaultTableModel {
         return super.getRowCount();
     }
 
+    public String[] getColNames() {
+        return this.colNames;
+    }
+
     @Override
     public int getColumnCount() {
         return (colNames.length);

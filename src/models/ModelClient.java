@@ -16,6 +16,10 @@ public class ModelClient extends DefaultTableModel {
         this.client = client;
     }
 
+    public String[] getColNames() {
+        return this.colNames;
+    }
+
     public int getRowCount() {
         return super.getRowCount();
     }

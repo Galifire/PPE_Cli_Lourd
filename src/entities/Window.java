@@ -5,10 +5,10 @@ import javax.swing.*;
 public class Window extends JDialog {
     private JPanel contentPane;
     private JLabel tableName;
+    private JComboBox tableBox;
+    private JScrollPane dataScrollPane;
+    private JLabel loggedLabel;
     private JPanel tablePanel;
-    private JTable dataTable;
-
-    private JScrollPane dataScrolLPane;
 
     public Window() {
         setContentPane(contentPane);
@@ -18,6 +18,7 @@ public class Window extends JDialog {
     public static void main(String[] args) {
         Window dialog = new Window();
         dialog.pack();
+        dialog.setSize(1600,900);
         dialog.setVisible(true);
         System.exit(0);
     }
@@ -39,7 +40,14 @@ public class Window extends JDialog {
     }
 
     public JScrollPane getDataScrolLPane() {
-        return dataScrolLPane;
+        return dataScrollPane;
     }
 
+    public JComboBox getTableBox() {
+        return this.tableBox;
+    }
+
+    public JLabel getLoggedLabel() {
+        return this.loggedLabel;
+    }
 }

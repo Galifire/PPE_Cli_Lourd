@@ -16,6 +16,10 @@ public class ModelCabinetMedical extends DefaultTableModel {
         this.cabinetMedical = cabinetMedical;
     }
 
+    public String[] getColNames() {
+        return this.colNames;
+    }
+
     public int getRowCount() {
         return super.getRowCount();
     }
