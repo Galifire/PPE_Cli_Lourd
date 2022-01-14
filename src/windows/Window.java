@@ -1,13 +1,12 @@
-package entities;
+package windows;
 
 import javax.swing.*;
 
 public class Window extends JDialog {
     private JPanel contentPane;
-    private JLabel tableName;
     private JComboBox tableBox;
     private JScrollPane dataScrollPane;
-    private JLabel loggedLabel;
+    private JButton logoutButton;
     private JPanel tablePanel;
 
     public Window() {
@@ -21,14 +20,6 @@ public class Window extends JDialog {
         dialog.setSize(1600,900);
         dialog.setVisible(true);
         System.exit(0);
-    }
-
-    public JLabel getTableName() {
-        return this.tableName;
-    }
-
-    public void setTableName(JLabel tableName) {
-        this.tableName = tableName;
     }
 
     public JPanel getTablePanel() {
@@ -47,7 +38,7 @@ public class Window extends JDialog {
         return this.tableBox;
     }
 
-    public JLabel getLoggedLabel() {
-        return this.loggedLabel;
+    public JButton getLogoutButton() {
+        return this.logoutButton;
     }
 }

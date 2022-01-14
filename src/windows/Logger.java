@@ -1,21 +1,19 @@
-package entities;
+package windows;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import entities.User;
 
 public class Logger extends JDialog {
     private JPanel contentPane;
-    private JButton buttonOK;
+    private JButton buttonLogin;
     private JButton buttonCancel;
     private JTextField loginField;
     private JTextField pwdField;
+    private JButton registerBtn;
 
     public Logger() {
         setContentPane(contentPane);
         setModal(true);
-        getRootPane().setDefaultButton(buttonOK);
+        getRootPane().setDefaultButton(buttonLogin);
     }
 
     public static void main(String[] args) {
@@ -33,11 +31,15 @@ public class Logger extends JDialog {
         return this.pwdField;
     }
 
-    public JButton getOkBtn() {
-        return this.buttonOK;
+    public JButton getLoginBtn() {
+        return this.buttonLogin;
     }
 
     public JButton getCancelBtn() {
         return this.buttonCancel;
+    }
+
+    public JButton getRegisterBtn() {
+        return this.registerBtn;
     }
 }

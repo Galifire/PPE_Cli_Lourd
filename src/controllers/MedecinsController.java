@@ -3,7 +3,6 @@ package controllers;
 
 import dao.DAOMedecins;
 import entities.Medecins;
-import entities.Window;
 import models.ModelMedecin;
 
 import javax.swing.*;

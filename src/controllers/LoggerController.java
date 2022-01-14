@@ -1,52 +1,70 @@
 package controllers;
 
 import dao.DAOUser;
-import entities.Logger;
+import windows.Erreur;
+import windows.Logger;
 import entities.User;
-import entities.Window;
+import windows.Register;
+import windows.Window;
 import org.hibernate.Session;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.security.NoSuchAlgorithmException;
 
 public class LoggerController {
 
     Logger logger;
     Session session;
 
-
     public LoggerController(Logger logger, Session session) {
         this.logger = logger;
         this.session = session;
 
-
-        logger.getOkBtn().addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onOK();
+        logger.getLoginBtn().addActionListener(e -> {
+            try {
+                login();
+            } catch (NoSuchAlgorithmException ex) {
+                ex.printStackTrace();
             }
         });
 
-        logger.getCancelBtn().addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onCancel();
-            }
+        logger.getCancelBtn().addActionListener(e -> {
+            onCancel();
+        });
+
+        logger.getRegisterBtn().addActionListener(e -> {
+            register();
         });
     }
 
-    public void onOK() {
+    public void login() throws NoSuchAlgorithmException {
         DAOUser dao = new DAOUser(session, User.class);
         String username = logger.getLogin().getText();
-        String pwd = logger.getPwd().getText();
-        if (!dao.findByCreds(username, pwd)) {
+        String pwd = dao.hashPwd(logger.getPwd().getText());
+        if (!dao.checkCreds(username, pwd)) {
+            User user = dao.findByCreds(username, pwd);
+            System.out.println(user);
             logger.dispose();
             Window w = new Window();
-            new WindowController(w, session);
-            w.setSize(800,600);
+            new WindowController(w, session, user);
+            w.setSize(1600,900);
             w.setVisible(true);
+        } else {
+            Erreur erreur = new Erreur();
+            new ErreurController(erreur, "nom d'utilisateur ou mot de passe incorrect, recommencez.");
+            erreur.setSize(400,200);
+            erreur.setVisible(true);
         }
     }
 
     public void onCancel() {
         logger.dispose();
+    }
+
+    public void register() {
+        logger.dispose();
+        Register register = new Register();
+        new RegisterController(register, session);
+        register.setSize(800,600);
+        register.setVisible(true);
     }
 }
