@@ -5,6 +5,7 @@ import entities.User;
 import org.hibernate.Session;
 import windows.Erreur;
 import windows.Logger;
+import windows.Main;
 import windows.Register;
 
 import java.nio.charset.StandardCharsets;
@@ -30,9 +31,21 @@ public class RegisterController {
             }
         });
 
+        register.getMainBtn().addActionListener(e -> {
+            homePage();
+        });
+
         register.getCancelBtn().addActionListener(e -> {
             cancel();
         });
+    }
+
+    public void homePage() {
+        register.dispose();
+        Main main = new Main();
+        new MainController(main, session);
+        main.setSize(800,600);
+        main.setVisible(true);
     }
 
     public void register() throws NoSuchAlgorithmException {

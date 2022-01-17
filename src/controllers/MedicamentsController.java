@@ -17,6 +17,9 @@ public class MedicamentsController {
 
     public JTable fill() {
         ArrayList<Medicaments> data = dao.findAll();
+        for (Medicaments m : data) {
+            System.out.println(m);
+        }
         ModelMedicament model = new ModelMedicament(data);
         String[] colNames = model.getColNames();
         for (int i = 0; i < colNames.length; i++) {

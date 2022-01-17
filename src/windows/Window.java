@@ -8,6 +8,7 @@ public class Window extends JDialog {
     private JScrollPane dataScrollPane;
     private JButton logoutButton;
     private JPanel tablePanel;
+    private JPanel headerPanel;
 
     public Window() {
         setContentPane(contentPane);
@@ -40,5 +41,9 @@ public class Window extends JDialog {
 
     public JButton getLogoutButton() {
         return this.logoutButton;
+    }
+
+    public JPanel getHeaderPanel() {
+        return headerPanel;
     }
 }

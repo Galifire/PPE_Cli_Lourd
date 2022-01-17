@@ -12,8 +12,8 @@ public class User {
     @Column(name = "username")
     private String username;
 
-    @Column(name = "roleId")
-    private Integer roleId;
+    @Column(name = "role")
+    private String role;
 
     @Column(name = "password")
     private String password;
@@ -34,12 +34,12 @@ public class User {
         this.username = username;
     }
 
-    public Integer getRoleId() {
-        return this.roleId;
+    public String getRole() {
+        return this.role;
     }
 
-    public void setRoleId(Integer roleId) {
-        this.roleId = roleId;
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public String getPassword() {

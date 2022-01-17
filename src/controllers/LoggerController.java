@@ -42,7 +42,7 @@ public class LoggerController {
         String pwd = dao.hashPwd(logger.getPwd().getText());
         if (!dao.checkCreds(username, pwd)) {
             User user = dao.findByCreds(username, pwd);
-            System.out.println(user);
+            System.out.println(user.getUsername());
             logger.dispose();
             Window w = new Window();
             new WindowController(w, session, user);

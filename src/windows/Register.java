@@ -13,11 +13,16 @@ public class Register extends JDialog {
     private JLabel pwdConfirmLabel;
     private JLabel usernameLabel;
     private JLabel pwdLabel;
+    private JButton mainBtn;
 
     public Register() {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonRegister);
+    }
+
+    public JButton getMainBtn() {
+        return this.mainBtn;
     }
 
     public JButton getRegisterBtn() {

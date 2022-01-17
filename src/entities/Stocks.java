@@ -11,7 +11,7 @@ public class Stocks implements Serializable {
     private String medicCode;
 
     @Id
-    @Column(name = "CABNum")
+    @Column(name = "PHARNum")
     private Integer cabNum;
 
     @Column(name = "Qte")
