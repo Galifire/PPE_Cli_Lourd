@@ -9,6 +9,7 @@ public class Window extends JDialog {
     private JButton logoutButton;
     private JPanel tablePanel;
     private JPanel headerPanel;
+    private JButton addButton;
 
     public Window() {
         setContentPane(contentPane);
@@ -44,6 +45,11 @@ public class Window extends JDialog {
     }
 
     public JPanel getHeaderPanel() {
-        return headerPanel;
+        return this.headerPanel;
     }
+
+    public JButton getAddButton() {
+        return this.addButton;
+    }
+
 }
