@@ -19,7 +19,7 @@ public class Rdv implements Serializable {
     private String dateRdv;
 
     @Column(name = "Heure")
-    private java.sql.Time heure;
+    private String heure;
 
     @Column(name = "Duree")
     private Integer duree;
@@ -54,11 +54,11 @@ public class Rdv implements Serializable {
         this.dateRdv = dateRdv;
     }
 
-    public java.sql.Time getHeure() {
+    public String getHeure() {
         return this.heure;
     }
 
-    public void setHeure(java.sql.Time heure) {
+    public void setHeure(String heure) {
         this.heure = heure;
     }
 

@@ -1,11 +1,11 @@
 package entities;
 
-import controllers.MainController;
+import controllers.admin.MainController;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import utils.HibernateUtil;
 import utils.TestConnection;
-import windows.Main;
+import windows.admin.Main;
 
 public class App {
 

@@ -55,7 +55,7 @@ public class ModelCommandes extends DefaultTableModel {
                 break;
             }
             case 2 : {
-                value = c.getMedicCode();
+                value = c.getMedicNum();
                 break;
             }
             case 3 : {
@@ -79,7 +79,7 @@ public class ModelCommandes extends DefaultTableModel {
                 break;
             }
             case 2 : {
-                c.setMedicCode(aValue.toString());
+                c.setMedicNum(Integer.parseInt(aValue.toString()));
                 break;
             }
             case 3 : {
@@ -100,11 +100,11 @@ public class ModelCommandes extends DefaultTableModel {
         switch(columnIndex) {
             case 0 :
             case 1 :
+            case 2 :
             case 4 : {
                 clazz = Integer.class;
                 break;
             }
-            case 2 :
             case 3 : {
                 clazz = String.class;
                 break;

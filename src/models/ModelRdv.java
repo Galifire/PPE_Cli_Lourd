@@ -92,7 +92,7 @@ public class ModelRdv extends DefaultTableModel {
                 break;
             }
             case 3 : {
-                rdv.setHeure((java.sql.Time) aValue);
+                rdv.setHeure(aValue.toString());
                 break;
             }
             case 4 : {
@@ -121,11 +121,9 @@ public class ModelRdv extends DefaultTableModel {
             case 5 : {
                 clazz = Integer.class;
             }
-            case 2 : {
-                clazz = String.class;
-            }
+            case 2 :
             case 3 : {
-                clazz = java.sql.Time.class;
+                clazz = String.class;
             }
         }
         return clazz;

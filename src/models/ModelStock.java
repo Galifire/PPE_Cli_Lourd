@@ -44,7 +44,7 @@ public class ModelStock extends DefaultTableModel {
         Stocks s = stock.get(row);
         switch(column) {
             case 0: {
-                value = s.getMedicCode();
+                value = s.getMedicNum();
                 break;
             }
             case 1 : {
@@ -64,7 +64,7 @@ public class ModelStock extends DefaultTableModel {
         Stocks s = stock.get(row);
         switch(column) {
             case 0 : {
-                s.setMedicCode(aValue.toString());
+                s.setMedicNum(Integer.parseInt(aValue.toString()));
             }
             case 1 : {
                 s.setCabNum(Integer.parseInt(aValue.toString()));
@@ -81,9 +81,7 @@ public class ModelStock extends DefaultTableModel {
     public Class<?> getColumnClass(int columnIndex) {
         Class<?> clazz = null;
         switch(columnIndex) {
-            case 0 : {
-                clazz = String.class;
-            }
+            case 0 :
             case 1 :
             case 2 : {
                 clazz = Integer.class;

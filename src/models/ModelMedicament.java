@@ -44,7 +44,7 @@ public class ModelMedicament extends DefaultTableModel {
         Medicaments m = medicaments.get(row);
         switch(column) {
             case 0: {
-                value = m.getMedicCode();
+                value = m.getMedicNum();
                 break;
             }
             case 1 : {
@@ -87,11 +87,11 @@ public class ModelMedicament extends DefaultTableModel {
         Class<?> clazz = null;
 
         switch(columnIndex) {
-            case 0 :
             case 1 :
             case 2 : {
                 clazz = String.class;
             }
+            case 0 :
             case 3 : {
                 clazz = Integer.class;
                 break;

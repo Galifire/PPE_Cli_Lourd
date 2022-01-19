@@ -13,6 +13,9 @@
     <mapping class="entities.Client" />
     <mapping class="entities.Commandes" />
     <mapping class="entities.Medecins" />
+    <mapping class="entities.Medicaments" />
+    <mapping class="entities.Pharmacie" />
+    <mapping class="entities.Pharmacien" />
     <mapping class="entities.Rdv" />
     <mapping class="entities.Stocks" />
     <mapping class="entities.User" />

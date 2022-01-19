@@ -1,14 +1,13 @@
 package entities;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Table(name = "medicaments")
-public class Medicaments implements Serializable {
+public class Medicaments {
     @Id
-    @Column(name = "MEDICCode")
-    private String medicCode;
+    @Column(name = "MEDICNum")
+    private Integer medicNum;
 
     @Column(name = "Nom")
     private String nom;
@@ -19,12 +18,12 @@ public class Medicaments implements Serializable {
     @Column(name = "DelaiProduction")
     private Integer delaiProduction;
 
-    public String getMedicCode() {
-        return this.medicCode;
+    public Integer getMedicNum() {
+        return this.medicNum;
     }
 
-    public void setMedicCode(String medicCode) {
-        this.medicCode = medicCode;
+    public void setMedicNum(Integer medicNum) {
+        this.medicNum = medicNum;
     }
 
     public String getNom() {

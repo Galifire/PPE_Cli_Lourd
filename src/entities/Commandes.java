@@ -15,8 +15,8 @@ public class Commandes implements Serializable {
     private Integer cliNum;
 
     @Id
-    @Column(name = "MEDICCode")
-    private String medicCode;
+    @Column(name = "MEDICNum")
+    private Integer medicNum;
 
     @Id
     @Column(name = "DateCde")
@@ -41,12 +41,12 @@ public class Commandes implements Serializable {
         this.cliNum = cliNum;
     }
 
-    public String getMedicCode() {
-        return this.medicCode;
+    public Integer getMedicNum() {
+        return this.medicNum;
     }
 
-    public void setMedicCode(String medicCode) {
-        this.medicCode = medicCode;
+    public void setMedicNum(Integer medicNum) {
+        this.medicNum = medicNum;
     }
 
     public String getDateCde() {

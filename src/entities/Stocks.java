@@ -7,8 +7,8 @@ import java.io.Serializable;
 @Table(name = "stocks")
 public class Stocks implements Serializable {
     @Id
-    @Column(name = "MEDICCode")
-    private String medicCode;
+    @Column(name = "MEDICNum")
+    private Integer medicNum;
 
     @Id
     @Column(name = "PHARNum")
@@ -17,12 +17,12 @@ public class Stocks implements Serializable {
     @Column(name = "Qte")
     private Integer qte;
 
-    public String getMedicCode() {
-        return this.medicCode;
+    public Integer getMedicNum() {
+        return this.medicNum;
     }
 
-    public void setMedicCode(String medicCode) {
-        this.medicCode = medicCode;
+    public void setMedicNum(Integer medicNum) {
+        this.medicNum = medicNum;
     }
 
     public Integer getCabNum() {
