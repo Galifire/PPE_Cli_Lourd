@@ -9,7 +9,7 @@ public class Main extends JDialog {
 
     public Main() {
         setContentPane(contentPane);
-        setModal(true);;
+        setModal(true);
     }
 
     public JButton getRegisterBtn() {

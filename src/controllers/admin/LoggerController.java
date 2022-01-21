@@ -47,6 +47,7 @@ public class LoggerController {
             Window w = new Window();
             new WindowController(w, session, user);
             w.setSize(1600,900);
+            w.setVisible(false);
             w.setVisible(true);
         } else {
             Erreur erreur = new Erreur();

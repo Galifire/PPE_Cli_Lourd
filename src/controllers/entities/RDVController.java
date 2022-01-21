@@ -15,6 +15,7 @@ public class RDVController {
         this.dao = dao;
     }
 
+
     public JTable fill() {
         ArrayList<Rdv> data = dao.findAll();
         ModelRdv model = new ModelRdv(data);
@@ -26,13 +27,13 @@ public class RDVController {
         for (int j = 0; j < data.size(); j++) {
             Rdv rdv = data.get(j);
             Object[] d = new Object[] {
-                rdv.getMedNum(),
-                rdv.getCliNum(),
-                rdv.getDateRdv(),
-                rdv.getHeure(),
-                rdv.getDuree(),
-                rdv.getPrix(),
-                rdv.getCommentaires()
+                    rdv.getMedNum(),
+                    rdv.getCliNum(),
+                    rdv.getDateRdv(),
+                    rdv.getHeure(),
+                    rdv.getDuree(),
+                    rdv.getPrix(),
+                    rdv.getCommentaires()
             };
             model.insertRow(j, d);
         }

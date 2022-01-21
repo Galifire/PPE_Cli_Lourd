@@ -1,7 +1,6 @@
 package windows.create;
 
 import javax.swing.*;
-import java.awt.event.*;
 
 public class CreateUser extends JDialog {
     private JPanel contentPane;
@@ -10,7 +9,7 @@ public class CreateUser extends JDialog {
     private JTextField idField;
     private JTextField usernameField;
     private JTextField pwdField;
-    private JLabel roleField;
+    private JTextField roleField;
 
     public CreateUser() {
         setContentPane(contentPane);
@@ -38,7 +37,7 @@ public class CreateUser extends JDialog {
         return pwdField;
     }
 
-    public JLabel getRoleField() {
+    public JTextField getRoleField() {
         return roleField;
     }
 

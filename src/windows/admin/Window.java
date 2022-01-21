@@ -16,14 +16,6 @@ public class Window extends JDialog {
         setModal(true);
     }
 
-    public static void main(String[] args) {
-        Window dialog = new Window();
-        dialog.pack();
-        dialog.setSize(1600,900);
-        dialog.setVisible(true);
-        System.exit(0);
-    }
-
     public JPanel getTablePanel() {
         return this.tablePanel;
     }
@@ -52,4 +44,11 @@ public class Window extends JDialog {
         return this.addButton;
     }
 
+    public static void main(String[] args) {
+        Window dialog = new Window();
+        dialog.pack();
+        dialog.setSize(1600,900);
+        dialog.setVisible(true);
+        System.exit(0);
+    }
 }

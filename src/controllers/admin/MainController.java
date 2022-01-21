@@ -19,7 +19,7 @@ public class MainController {
         });
 
         main.getLoginBtn().addActionListener(e -> {
-            login();
+            logging();
         });
     }
 
@@ -31,11 +31,12 @@ public class MainController {
         register.setVisible(true);
     }
 
-    public void login() {
-        main.dispose();
+    public void logging() {
         Logger logger = new Logger();
         new LoggerController(logger, session);
         logger.setSize(800,600);
+        main.dispose();
         logger.setVisible(true);
+
     }
 }
