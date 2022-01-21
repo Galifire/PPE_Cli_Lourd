@@ -7,7 +7,7 @@ public class ErreurController {
     Erreur erreur;
     String text;
 
-    ErreurController(Erreur erreur, String text) {
+    public ErreurController(Erreur erreur, String text) {
         this.erreur = erreur;
         this.text = text;
 

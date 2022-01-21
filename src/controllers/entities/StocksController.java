@@ -27,7 +27,7 @@ public class StocksController {
             Stocks s = data.get(j);
             Object[] d = new Object[] {
                     s.getMedicNum(),
-                    s.getCabNum(),
+                    s.getPharNum(),
                     s.getQte()
             };
             model.insertRow(j, d);

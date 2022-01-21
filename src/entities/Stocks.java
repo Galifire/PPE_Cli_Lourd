@@ -12,7 +12,7 @@ public class Stocks implements Serializable {
 
     @Id
     @Column(name = "PHARNum")
-    private Integer cabNum;
+    private Integer pharNum;
 
     @Column(name = "Qte")
     private Integer qte;
@@ -25,12 +25,12 @@ public class Stocks implements Serializable {
         this.medicNum = medicNum;
     }
 
-    public Integer getCabNum() {
-        return this.cabNum;
+    public Integer getPharNum() {
+        return this.pharNum;
     }
 
-    public void setCabNum(Integer cabNum) {
-        this.cabNum = cabNum;
+    public void setPharNum(Integer cabNum) {
+        this.pharNum = cabNum;
     }
 
     public Integer getQte() {

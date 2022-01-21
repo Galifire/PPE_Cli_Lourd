@@ -48,7 +48,7 @@ public class ModelStock extends DefaultTableModel {
                 break;
             }
             case 1 : {
-                value = s.getCabNum();
+                value = s.getPharNum();
                 break;
             }
             case 2 : {
@@ -67,7 +67,7 @@ public class ModelStock extends DefaultTableModel {
                 s.setMedicNum(Integer.parseInt(aValue.toString()));
             }
             case 1 : {
-                s.setCabNum(Integer.parseInt(aValue.toString()));
+                s.setPharNum(Integer.parseInt(aValue.toString()));
                 break;
             }
             case 2 : {
