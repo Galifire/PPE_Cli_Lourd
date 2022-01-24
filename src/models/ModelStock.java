@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ModelStock extends DefaultTableModel {
     List<Stocks> stock;
-    String[] colNames = {"MEDICCode", "CABNum", "Qte", "Éditer", "Supprimer"};
+    String[] colNames = {"MEDICCode", "CABNum", "Qte"};
     HashSet<Stocks> hashSet = new HashSet<>();
 
     public ModelStock(List<Stocks> stock) {

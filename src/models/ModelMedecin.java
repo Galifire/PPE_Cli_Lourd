@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class ModelMedecin extends DefaultTableModel {
 
     ArrayList<Medecins> medecin;
-    String[] colNames = {"MEDNum", "Nom", "Prenom", "Adresse", "Email", "Telephone", "CABNum", "Éditer", "Supprimer"};
+    String[] colNames = {"MEDNum", "Nom", "Prenom", "Adresse", "Email", "Telephone", "CABNum"};
     HashSet<Medecins> modified = new HashSet<>();
 
     public ModelMedecin(ArrayList<Medecins> medecin) {

@@ -30,7 +30,7 @@ public class CabinetMedicalController {
                     cabM.getNom(),
                     cabM.getAdresse(),
                     cabM.getEffectif(),
-                    cabM.getHoraires()
+                    cabM.getHoraires(),
             };
             model.insertRow(j, d);
         }

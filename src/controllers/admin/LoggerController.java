@@ -26,7 +26,6 @@ public class LoggerController {
             }
         });
 
-
         logger.getCancelBtn().addActionListener(e -> onCancel());
 
         logger.getRegisterBtn().addActionListener(e -> register());

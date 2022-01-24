@@ -19,7 +19,6 @@ public class RegisterController {
         this.register = register;
         this.session = session;
 
-
         register.getRegisterBtn().addActionListener(e -> {
             try {
                 register();
@@ -46,9 +45,10 @@ public class RegisterController {
         String username = register.getUsernameField().getText();
         String pwd = dao.hashPwd(register.getPwdField().getText());
         String pwdConfirmed = dao.hashPwd(register.getConfirmedPwdField().getText());
-        System.out.println(dao.userNotExists(username));
-        System.out.println(Objects.equals(pwd, pwdConfirmed));
-        if (dao.userNotExists(username) && (Objects.equals(pwd, pwdConfirmed))) {
+        if (username.isEmpty() || pwd.isEmpty() || pwdConfirmed.isEmpty()) {
+            Erreur erreur = new Erreur();
+            new ErreurController(erreur, "Les champs ne peuvent pas être vides!");
+        } else if (dao.userNotExists(username) && (Objects.equals(pwd, pwdConfirmed))) {
             User user = new User();
             user.setId(((int)dao.count())+1);
             user.setUsername(username);
@@ -57,18 +57,12 @@ public class RegisterController {
             register.dispose();
             Logger logger = new Logger();
             new LoggerController(logger, session);
-            logger.setSize(800,600);
-            logger.setVisible(true);
         } else if (!(Objects.equals(pwd, pwdConfirmed))) {
             Erreur erreur = new Erreur();
             new ErreurController(erreur, "mots de passe différents, recommencez.");
-            erreur.setSize(400,200);
-            erreur.setVisible(true);
         } else if (!dao.userNotExists(username)) {
             Erreur erreur = new Erreur();
             new ErreurController(erreur, "utilisateur déjà existant");
-            erreur.setSize(400,200);
-            erreur.setVisible(true);
         }
     }
 

@@ -9,7 +9,7 @@ import java.util.List;
 public class ModelClient extends DefaultTableModel {
 
     List<Client> client;
-    String[] colNames = {"CLINum", "Nom", "Prenom", "Adresse", "Email", "Telephone", "Éditer", "Supprimer"};
+    String[] colNames = {"CLINum", "Nom", "Prenom", "Adresse", "Email", "Telephone"};
     HashSet<Client> hashSet = new HashSet<>();
 
     public ModelClient(List<Client> client) {

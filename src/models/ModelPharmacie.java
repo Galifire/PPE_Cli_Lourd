@@ -8,7 +8,7 @@ import java.util.List;
 public class ModelPharmacie extends DefaultTableModel {
 
     List<Pharmacie> pharmacie;
-    String[] colNames = {"PHARNum", "Nom", "Ville", "CodePostal", "Adresse", "Effectif", "Éditer", "Supprimer"};
+    String[] colNames = {"PHARNum", "Nom", "Ville", "CodePostal", "Adresse", "Effectif"};
     HashSet<Pharmacie> hashSet = new HashSet<>();
 
     public ModelPharmacie(List<Pharmacie> pharmacie) {

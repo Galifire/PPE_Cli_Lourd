@@ -10,6 +10,8 @@ public class Window extends JDialog {
     private JPanel tablePanel;
     private JPanel headerPanel;
     private JButton addButton;
+    private JButton editButton;
+    private JButton deleteButton;
 
     public Window() {
         setContentPane(contentPane);
@@ -42,6 +44,14 @@ public class Window extends JDialog {
 
     public JButton getAddButton() {
         return this.addButton;
+    }
+
+    public JButton getEditButton() {
+        return this.editButton;
+    }
+
+    public JButton getDeleteButton() {
+        return this.deleteButton;
     }
 
     public static void main(String[] args) {

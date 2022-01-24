@@ -33,7 +33,6 @@ public class RDVController {
                     rdv.getHeure(),
                     rdv.getDuree(),
                     rdv.getPrix(),
-                    rdv.getCommentaires()
             };
             model.insertRow(j, d);
         }

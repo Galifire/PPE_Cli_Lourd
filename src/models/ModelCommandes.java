@@ -11,7 +11,7 @@ import java.util.List;
 public class ModelCommandes extends DefaultTableModel {
 
     List<Commandes> commande;
-    String[] colNames = {"CDENum", "CLINum", "MEDICCode", "DateCde", "Qte", "Éditer", "Supprimer"};
+    String[] colNames = {"CDENum", "CLINum", "MEDICCode", "DateCde", "Qte"};
     HashSet<Commandes> hashSet = new HashSet<>();
 
     public ModelCommandes(List<Commandes> commande) {

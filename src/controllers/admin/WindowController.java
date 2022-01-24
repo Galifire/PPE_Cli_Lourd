@@ -30,6 +30,8 @@ public class WindowController {
         window.getLogoutButton().addActionListener(e -> logout());
 
         window.getAddButton().addActionListener(e -> create());
+
+        window.getEditButton().addActionListener(e -> edit());
     }
 
     public void logout() {
@@ -131,6 +133,10 @@ public class WindowController {
                 break;
             }
         }
+    }
+
+    public void edit() {
+
     }
 
     public void fillTable(JTable table) {
