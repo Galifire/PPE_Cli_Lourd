@@ -1,20 +1,21 @@
 package controllers.create;
 
-import controllers.admin.ErreurController;
 import dao.DAOClient;
 import entities.Client;
 import org.hibernate.Session;
-import windows.admin.Erreur;
-import windows.create.CreateClient;
+import windows.entities.WindowClient;
 
 public class CreateClientController {
 
-    CreateClient cc;
+    WindowClient cc;
     Session session;
 
-    public CreateClientController(CreateClient cc, Session session) {
+    public CreateClientController(WindowClient cc, Session session) {
         this.cc = cc;
         this.session = session;
+
+        cc.setTitle("Créer un client");
+        cc.getNumField().setEditable(false);
 
         cc.getButtonOK().addActionListener(e -> {
             submit();
@@ -26,23 +27,15 @@ public class CreateClientController {
     }
 
     public void submit() {
-        if (cc.getNumField().getText().isEmpty()) {
-            Erreur e = new Erreur();
-            new ErreurController(e, "La clé primaire ne peut pas être vide, réessayez.");
-            e.setSize(400, 200);
-            e.setVisible(true);
-        } else {
-            Client c = new Client();
-            c.setCliNum(Integer.parseInt(cc.getNumField().getText()));
-            c.setNom(cc.getNomField().getText());
-            c.setPrenom(cc.getPrenomField().getText());
-            c.setAdresse(cc.getAdresseField().getText());
-            c.setEmail(cc.getEmailField().getText());
-            c.setTelephone(cc.getTelField().getText());
-            DAOClient dao = new DAOClient(session, Client.class);
-            dao.saveOrUpdate(c);
-            cc.dispose();
-        }
+        Client c = new Client();
+        c.setNom(cc.getNomField().getText());
+        c.setPrenom(cc.getPrenomField().getText());
+        c.setAdresse(cc.getAdresseField().getText());
+        c.setEmail(cc.getEmailField().getText());
+        c.setTelephone(cc.getTelField().getText());
+        DAOClient dao = new DAOClient(session, Client.class);
+        dao.saveOrUpdate(c);
+        cc.dispose();
     }
 
     public void cancel() {

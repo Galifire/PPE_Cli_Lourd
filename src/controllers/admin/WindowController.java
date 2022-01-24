@@ -7,7 +7,7 @@ import entities.*;
 import org.hibernate.Session;
 import windows.admin.Logger;
 import windows.admin.Window;
-import windows.create.*;
+import windows.entities.*;
 
 import javax.swing.*;
 
@@ -27,13 +27,9 @@ public class WindowController {
             addTable();
         });
 
-        window.getLogoutButton().addActionListener(e -> {
-            logout();
-        });
+        window.getLogoutButton().addActionListener(e -> logout());
 
-        window.getAddButton().addActionListener(e -> {
-            create();
-        });
+        window.getAddButton().addActionListener(e -> create());
     }
 
     public void logout() {
@@ -80,55 +76,55 @@ public class WindowController {
     public void create() {
         switch (window.getTableBox().getSelectedIndex()) {
             case 1 : {
-                CreateCabinetMedical ccm = new CreateCabinetMedical();
+                WindowCabinetMedical ccm = new WindowCabinetMedical();
                 new CreateCabinetMedicalController(ccm, session);
                 ccm.setSize(800,600);
                 ccm.setVisible(true);
                 break;
             } case 2 : {
-                CreateClient cc = new CreateClient();
+                WindowClient cc = new WindowClient();
                 new CreateClientController(cc, session);
                 cc.setSize(800,600);
                 cc.setVisible(true);
                 break;
             } case 3 : {
-                CreateCommande cc = new CreateCommande();
+                WindowCommande cc = new WindowCommande();
                 new CreateCommandeController(cc, session);
                 cc.setSize(800,600);
                 cc.setVisible(true);
                 break;
             } case 4 : {
-                CreateMedecin cm = new CreateMedecin();
+                WindowMedecin cm = new WindowMedecin();
                 new CreateMedecinController(cm, session);
                 cm.setSize(800,600);
                 cm.setVisible(true);
                 break;
             } case 5 : {
-                CreateMedicament cm = new CreateMedicament();
+                WindowMedicament cm = new WindowMedicament();
                 new CreateMedicamentController(cm, session);
                 cm.setSize(800,600);
                 cm.setVisible(true);
                 break;
             } case 6 : {
-                CreatePharmacie cp = new CreatePharmacie();
+                WindowPharmacie cp = new WindowPharmacie();
                 new CreatePharmacieController(cp, session);
                 cp.setSize(800,600);
                 cp.setVisible(true);
                 break;
             } case 7 : {
-                CreatePharmacien cp = new CreatePharmacien();
+                WindowPharmacien cp = new WindowPharmacien();
                 new CreatePharmacienController(cp, session);
                 cp.setSize(800,600);
                 cp.setVisible(true);
                 break;
             } case 8 : {
-                CreateRdv cr = new CreateRdv();
+                WindowRdv cr = new WindowRdv();
                 new CreateRdvController(cr, session);
                 cr.setSize(800,600);
                 cr.setVisible(true);
                 break;
             } case 9 : {
-                CreateStock cs = new CreateStock();
+                WindowStock cs = new WindowStock();
                 new CreateStockController(cs, session);
                 cs.setSize(800,600);
                 cs.setVisible(true);

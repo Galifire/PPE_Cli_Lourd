@@ -6,16 +6,19 @@ import entities.CabinetMedical;
 import entities.Commandes;
 import org.hibernate.Session;
 import windows.admin.Erreur;
-import windows.create.CreateCommande;
+import windows.entities.WindowCommande;
 
 public class CreateCommandeController {
 
-    CreateCommande cc;
+    WindowCommande cc;
     Session session;
 
-    public CreateCommandeController(CreateCommande cc, Session session) {
+    public CreateCommandeController(WindowCommande cc, Session session) {
         this.cc = cc;
         this.session = session;
+
+        cc.setTitle("Créer une commande");
+        cc.getNumField().setEditable(false);
 
         cc.getButtonOK().addActionListener(e -> {
             submit();
@@ -27,14 +30,13 @@ public class CreateCommandeController {
     }
 
     public void submit() {
-        if (cc.getNumField().getText().isEmpty()) {
+        if (cc.getCliField().getText().isEmpty() || cc.getMedicField().getText().isEmpty()) {
             Erreur e = new Erreur();
             new ErreurController(e, "La clé primaire ne peut pas être vide, réessayez.");
             e.setSize(400,200);
             e.setVisible(true);
         } else {
             Commandes c = new Commandes();
-            c.setCdeNum(Integer.parseInt(cc.getNumField().getText()));
             c.setCliNum(Integer.parseInt(cc.getCliField().getText()));
             c.setMedicNum(Integer.parseInt(cc.getMedicField().getText()));
             c.setDateCde(cc.getDateField().getText());

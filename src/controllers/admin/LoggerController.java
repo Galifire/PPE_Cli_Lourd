@@ -7,7 +7,6 @@ import entities.User;
 import windows.admin.Register;
 import windows.admin.Window;
 import org.hibernate.Session;
-
 import java.security.NoSuchAlgorithmException;
 
 public class LoggerController {
@@ -27,13 +26,10 @@ public class LoggerController {
             }
         });
 
-        logger.getCancelBtn().addActionListener(e -> {
-            onCancel();
-        });
 
-        logger.getRegisterBtn().addActionListener(e -> {
-            register();
-        });
+        logger.getCancelBtn().addActionListener(e -> onCancel());
+
+        logger.getRegisterBtn().addActionListener(e -> register());
     }
 
     public void login() throws NoSuchAlgorithmException {
@@ -47,7 +43,6 @@ public class LoggerController {
             Window w = new Window();
             new WindowController(w, session, user);
             w.setSize(1600,900);
-            w.setVisible(false);
             w.setVisible(true);
         } else {
             Erreur erreur = new Erreur();

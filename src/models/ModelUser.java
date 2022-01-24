@@ -10,7 +10,7 @@ import java.util.List;
 public class ModelUser extends DefaultTableModel {
 
     List<User> user;
-    String[] colNames = {"Id", "Username", "Password", "Role"};
+    String[] colNames = {"Id", "Username", "Password", "Role", "Éditer", "Supprimer"};
     HashSet<Stocks> hashSet = new HashSet<>();
 
     public ModelUser(List<User> user) {

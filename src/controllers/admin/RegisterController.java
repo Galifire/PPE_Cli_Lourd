@@ -7,7 +7,6 @@ import windows.admin.Erreur;
 import windows.admin.Logger;
 import windows.admin.Main;
 import windows.admin.Register;
-
 import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 
@@ -29,13 +28,9 @@ public class RegisterController {
             }
         });
 
-        register.getMainBtn().addActionListener(e -> {
-            homePage();
-        });
+        register.getMainBtn().addActionListener(e -> homePage());
 
-        register.getCancelBtn().addActionListener(e -> {
-            cancel();
-        });
+        register.getCancelBtn().addActionListener(e -> cancel());
     }
 
     public void homePage() {

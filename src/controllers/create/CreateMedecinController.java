@@ -1,19 +1,21 @@
 package controllers.create;
 
-import controllers.admin.ErreurController;
 import entities.Medecins;
+import dao.DAOMedecins;
 import org.hibernate.Session;
-import windows.admin.Erreur;
-import windows.create.CreateMedecin;
+import windows.entities.WindowMedecin;
 
 public class CreateMedecinController {
 
-    CreateMedecin cm;
+    WindowMedecin cm;
     Session session;
 
-    public CreateMedecinController(CreateMedecin cm, Session session) {
+    public CreateMedecinController(WindowMedecin cm, Session session) {
         this.cm = cm;
         this.session = session;
+
+        cm.setTitle("Créer un médecin");
+        cm.getNumField().setEditable(false);
 
         cm.getButtonOK().addActionListener(e -> {
             submit();
@@ -25,21 +27,15 @@ public class CreateMedecinController {
     }
 
     public void submit() {
-        if (cm.getNumField().getText().isEmpty()) {
-            Erreur e = new Erreur();
-            new ErreurController(e, "La clé primaire ne peut pas être vide, réessayez.");
-            e.setSize(400,200);
-            e.setVisible(true);
-        } else {
-            Medecins m = new Medecins();
-            m.setMedNum(Integer.parseInt(cm.getNumField().getText()));
-            m.setNom(cm.getNomField().getText());
-            m.setPrenom(cm.getPrenomField().getText());
-            m.setAdresse(cm.getAdresseField().getText());
-            m.setEmail(cm.getEmailField().getText());
-            m.setCabNum(Integer.parseInt(cm.getCabField().getText()));
-            cm.dispose();
-        }
+        Medecins m = new Medecins();
+        m.setNom(cm.getNomField().getText());
+        m.setPrenom(cm.getPrenomField().getText());
+        m.setAdresse(cm.getAdresseField().getText());
+        m.setEmail(cm.getEmailField().getText());
+        m.setCabNum(Integer.parseInt(cm.getCabField().getText()));
+        DAOMedecins dao = new DAOMedecins(session, Medecins.class);
+        dao.saveOrUpdate(m);
+        cm.dispose();
     }
 
     public void cancel() {

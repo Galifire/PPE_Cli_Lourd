@@ -1,20 +1,21 @@
 package controllers.create;
 
-import controllers.admin.ErreurController;
-import entities.Medicaments;
+import dao.DAOPharmacie;
 import entities.Pharmacie;
 import org.hibernate.Session;
-import windows.admin.Erreur;
-import windows.create.CreatePharmacie;
+import windows.entities.WindowPharmacie;
 
 public class CreatePharmacieController {
 
-    CreatePharmacie cp;
+    WindowPharmacie cp;
     Session session;
 
-    public CreatePharmacieController(CreatePharmacie cp, Session session) {
+    public CreatePharmacieController(WindowPharmacie cp, Session session) {
         this.cp = cp;
         this.session = session;
+
+        cp.setTitle("Créer une pharmacie");
+        cp.getNumField().setEditable(false);
 
         cp.getButtonOK().addActionListener(e -> {
             submit();
@@ -26,21 +27,15 @@ public class CreatePharmacieController {
     }
 
     public void submit() {
-        if (cp.getNumField().getText().isEmpty()) {
-            Erreur e = new Erreur();
-            new ErreurController(e, "La clé primaire ne peut pas être vide, réessayez.");
-            e.setSize(400,200);
-            e.setVisible(true);
-        } else {
-            Pharmacie p = new Pharmacie();
-            p.setPharNum(Integer.parseInt(cp.getNumField().getText()));
-            p.setNom(cp.getNomField().getText());
-            p.setVille(cp.getVilleField().getText());
-            p.setCodePostal(cp.getCodePostalField().getText());
-            p.setAdresse(cp.getAdresseField().getText());
-            p.setEffectif(Integer.parseInt(cp.getEffectifField().getText()));
-            cp.dispose();
-        }
+        Pharmacie p = new Pharmacie();
+        p.setNom(cp.getNomField().getText());
+        p.setVille(cp.getVilleField().getText());
+        p.setCodePostal(cp.getCodePostalField().getText());
+        p.setAdresse(cp.getAdresseField().getText());
+        p.setEffectif(Integer.parseInt(cp.getEffectifField().getText()));
+        DAOPharmacie dao = new DAOPharmacie(session, Pharmacie.class);
+        dao.saveOrUpdate(p);
+        cp.dispose();
     }
 
     public void cancel() {

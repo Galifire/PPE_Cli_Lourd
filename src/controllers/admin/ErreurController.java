@@ -13,9 +13,7 @@ public class ErreurController {
 
         erreur.getErrorText().setText(text);
 
-        erreur.getOkBtn().addActionListener(e -> {
-            erreur.dispose();
-        });
+        erreur.getOkBtn().addActionListener(e -> erreur.dispose());
     }
 
 

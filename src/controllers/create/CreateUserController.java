@@ -5,16 +5,19 @@ import dao.DAOUser;
 import entities.User;
 import org.hibernate.Session;
 import windows.admin.Erreur;
-import windows.create.CreateUser;
+import windows.entities.WindowUser;
 
 public class CreateUserController {
 
-    CreateUser cu;
+    WindowUser cu;
     Session session;
 
-    public CreateUserController(CreateUser cu, Session session) {
+    public CreateUserController(WindowUser cu, Session session) {
         this.cu = cu;
         this.session = session;
+
+        cu.setTitle("Créer un utilisateur");
+        cu.getIdField().setEditable(false);
 
         cu.getButtonOK().addActionListener(e -> {
             submit();
@@ -34,7 +37,6 @@ public class CreateUserController {
         } else {
             User u = new User();
             DAOUser dao = new DAOUser(session, User.class);
-            u.setId(Integer.parseInt(cu.getIdField().getText()));
             u.setUsername(cu.getUsernameField().getText());
             u.setPassword(dao.hashPwd(cu.getPwdField().getText()));
             u.setRole(cu.getRoleField().getText());

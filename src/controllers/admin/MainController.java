@@ -14,13 +14,9 @@ public class MainController {
         this.main = main;
         this.session = session;
 
-        main.getRegisterBtn().addActionListener(e -> {
-            register();
-        });
+        main.getRegisterBtn().addActionListener(e -> register());
 
-        main.getLoginBtn().addActionListener(e -> {
-            logging();
-        });
+        main.getLoginBtn().addActionListener(e -> logging());
     }
 
     public void register() {
@@ -32,11 +28,10 @@ public class MainController {
     }
 
     public void logging() {
+        main.dispose();
         Logger logger = new Logger();
         new LoggerController(logger, session);
         logger.setSize(800,600);
-        main.dispose();
         logger.setVisible(true);
-
     }
 }

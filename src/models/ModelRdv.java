@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ModelRdv extends DefaultTableModel {
     List<Rdv> rendezvous;
-    String[] colNames = {"MEDNum", "CLINum", "DateRdv", "Heure", "Duree", "Prix", "Commentaires"};
+    String[] colNames = {"MEDNum", "CLINum", "DateRdv", "Heure", "Duree", "Prix", "Commentaires", "Éditer", "Supprimer"};
     HashSet<Rdv> hashSet = new HashSet<>();
 
     public ModelRdv(List<Rdv> rendezvous) {

@@ -4,16 +4,18 @@ import controllers.admin.ErreurController;
 import entities.Rdv;
 import org.hibernate.Session;
 import windows.admin.Erreur;
-import windows.create.CreateRdv;
+import windows.entities.WindowRdv;
 
 public class CreateRdvController {
 
-    CreateRdv cr;
+    WindowRdv cr;
     Session session;
 
-    public CreateRdvController(CreateRdv cr, Session session) {
+    public CreateRdvController(WindowRdv cr, Session session) {
         this.cr = cr;
         this.session = session;
+
+        cr.setTitle("Créer un rendez-vous");
 
         cr.getButtonOK().addActionListener(e -> {
             submit();
@@ -25,7 +27,7 @@ public class CreateRdvController {
     }
 
     public void submit() {
-        if ((cr.getMedecinField().getText().isEmpty()) && (cr.getClientField().getText().isEmpty()) && (cr.getDateField().getText().isEmpty())) {
+        if ((cr.getMedecinField().getText().isEmpty()) || (cr.getClientField().getText().isEmpty()) || (cr.getDateField().getText().isEmpty())) {
             Erreur e = new Erreur();
             new ErreurController(e, "La clé primaire ne peut pas être vide, réessayez.");
             e.setSize(400,200);

@@ -1,20 +1,21 @@
 package controllers.create;
 
-import controllers.admin.ErreurController;
-import entities.Medecins;
 import entities.Medicaments;
 import org.hibernate.Session;
-import windows.admin.Erreur;
-import windows.create.CreateMedicament;
+import dao.DAOMedicaments;
+import windows.entities.WindowMedicament;
 
 public class CreateMedicamentController {
 
-    CreateMedicament cm;
+    WindowMedicament cm;
     Session session;
 
-    public CreateMedicamentController(CreateMedicament cm, Session session) {
+    public CreateMedicamentController(WindowMedicament cm, Session session) {
         this.cm = cm;
         this.session = session;
+
+        cm.setTitle("Créer un médicament");
+        cm.getNumField().setEditable(false);
 
         cm.getButtonOK().addActionListener(e -> {
             submit();
@@ -26,19 +27,13 @@ public class CreateMedicamentController {
     }
 
     public void submit() {
-        if (cm.getNumField().getText().isEmpty()) {
-            Erreur e = new Erreur();
-            new ErreurController(e, "La clé primaire ne peut pas être vide, réessayez.");
-            e.setSize(400,200);
-            e.setVisible(true);
-        } else {
-            Medicaments m = new Medicaments();
-            m.setMedicNum(Integer.parseInt(cm.getNumField().getText()));
-            m.setNom(cm.getNomField().getText());
-            m.setRestrictions(cm.getRestrictionsField().getText());
-            m.setDelaiProduction(Integer.parseInt(cm.getDelaiField().getText()));
-            cm.dispose();
-        }
+        Medicaments m = new Medicaments();
+        m.setNom(cm.getNomField().getText());
+        m.setRestrictions(cm.getRestrictionsField().getText());
+        m.setDelaiProduction(Integer.parseInt(cm.getDelaiField().getText()));
+        DAOMedicaments dao = new DAOMedicaments(session, Medicaments.class);
+        dao.saveOrUpdate(m);
+        cm.dispose();
     }
 
     public void cancel() {

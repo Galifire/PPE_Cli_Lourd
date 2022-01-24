@@ -9,7 +9,7 @@ import java.util.List;
 public class ModelCabinetMedical extends DefaultTableModel {
 
     List<CabinetMedical> cabinetMedical;
-    String[] colNames = {"CABNum", "Nom", "Adresse", "Effectif", "Horaires"};
+    String[] colNames = {"CABNum", "Nom", "Adresse", "Effectif", "Horaires", "Éditer", "Supprimer"};
     HashSet<CabinetMedical> hashSet = new HashSet<>();
 
     public ModelCabinetMedical(List<CabinetMedical> cabinetMedical) {
