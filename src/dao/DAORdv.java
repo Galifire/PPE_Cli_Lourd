@@ -1,6 +1,10 @@
 package dao;
 
+import entities.Rdv;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Restrictions;
 
 public class DAORdv extends DAOGeneric
 {
@@ -8,4 +12,9 @@ public class DAORdv extends DAOGeneric
         super(session, entityClass);
     }
 
+    public Rdv findById(int id) {
+        Criteria criteria = session.createCriteria(entityClass);
+        Criterion criterion = Restrictions.eq("rdvNum", id);
+        return (Rdv) criteria.add(criterion).list().get(0);
+    }
 }

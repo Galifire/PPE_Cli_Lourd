@@ -16,6 +16,7 @@ public class CreateStockController {
         this.session = session;
 
         cs.setTitle("Ajouter un stock");
+        cs.getNumField().setEditable(false);
 
         cs.getButtonOK().addActionListener(e -> {
             submit();

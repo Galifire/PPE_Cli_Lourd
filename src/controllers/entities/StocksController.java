@@ -26,6 +26,7 @@ public class StocksController {
         for (int j = 0; j < data.size(); j++) {
             Stocks s = data.get(j);
             Object[] d = new Object[] {
+                    s.getStockNum(),
                     s.getMedicNum(),
                     s.getPharNum(),
                     s.getQte()

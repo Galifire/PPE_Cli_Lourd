@@ -6,15 +6,17 @@ import java.io.Serializable;
 @Entity
 @Table(name = "rdv")
 public class Rdv implements Serializable {
+
     @Id
+    @Column(name = "RDVNum")
+    private Integer rdvNum;
+
     @Column(name = "MEDNum")
     private Integer medNum;
 
-    @Id
     @Column(name = "CLINum")
     private Integer cliNum;
 
-    @Id
     @Column(name = "DateRdv")
     private String dateRdv;
 
@@ -29,6 +31,14 @@ public class Rdv implements Serializable {
 
     @Column(name = "Commentaires")
     private String commentaires;
+
+    public Integer getRdvNum() {
+        return this.rdvNum;
+    }
+
+    public void setRdvNum(Integer rdvNum) {
+        this.rdvNum = rdvNum;
+    }
 
     public Integer getMedNum() {
         return this.medNum;

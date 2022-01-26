@@ -1,6 +1,7 @@
 package controllers.admin;
 
 import controllers.create.*;
+import controllers.edit.*;
 import controllers.entities.*;
 import dao.*;
 import entities.*;
@@ -136,7 +137,10 @@ public class WindowController {
     }
 
     public void edit() {
-
+        IdSelector id = new IdSelector();
+        IdSelectorController idC = new IdSelectorController(id, session, window.getTableBox().getSelectedIndex());
+        id.setSize(800,600);
+        id.setVisible(true);
     }
 
     public void fillTable(JTable table) {

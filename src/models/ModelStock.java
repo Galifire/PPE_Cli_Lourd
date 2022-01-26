@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ModelStock extends DefaultTableModel {
     List<Stocks> stock;
-    String[] colNames = {"MEDICCode", "CABNum", "Qte"};
+    String[] colNames = {"STOCKNum", "MEDICNum", "CABNum", "Qte"};
     HashSet<Stocks> hashSet = new HashSet<>();
 
     public ModelStock(List<Stocks> stock) {
@@ -43,15 +43,19 @@ public class ModelStock extends DefaultTableModel {
         Object value = null;
         Stocks s = stock.get(row);
         switch(column) {
-            case 0: {
-                value = s.getMedicNum();
+            case 0 : {
+                value = s.getStockNum();
                 break;
             }
             case 1 : {
-                value = s.getPharNum();
+                value = s.getMedicNum();
                 break;
             }
             case 2 : {
+                value = s.getPharNum();
+                break;
+            }
+            case 3 : {
                 value = s.getQte();
                 break;
             }
@@ -64,13 +68,16 @@ public class ModelStock extends DefaultTableModel {
         Stocks s = stock.get(row);
         switch(column) {
             case 0 : {
-                s.setMedicNum(Integer.parseInt(aValue.toString()));
+                s.setStockNum(Integer.parseInt(aValue.toString()));
             }
             case 1 : {
+                s.setMedicNum(Integer.parseInt(aValue.toString()));
+            }
+            case 2 : {
                 s.setPharNum(Integer.parseInt(aValue.toString()));
                 break;
             }
-            case 2 : {
+            case 3 : {
                 s.setQte(Integer.parseInt(aValue.toString()));
                 break;
             }
@@ -83,7 +90,8 @@ public class ModelStock extends DefaultTableModel {
         switch(columnIndex) {
             case 0 :
             case 1 :
-            case 2 : {
+            case 2 :
+            case 3 : {
                 clazz = Integer.class;
             }
         }

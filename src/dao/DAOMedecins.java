@@ -2,9 +2,12 @@ package dao;
 
 import entities.CabinetMedical;
 import entities.Medecins;
+import org.hibernate.Criteria;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Restrictions;
 import utils.HibernateUtil;
 
 import java.util.List;
@@ -32,5 +35,11 @@ public class DAOMedecins extends DAOGeneric {
             medecins = queryMedecins.list();
         }
         return medecins;
+    }
+
+    public Medecins findById(int id) {
+        Criteria criteria = session.createCriteria(entityClass);
+        Criterion criterion = Restrictions.eq("medNum", id);
+        return (Medecins) criteria.add(criterion).list().get(0);
     }
 }

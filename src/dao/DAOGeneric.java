@@ -16,7 +16,7 @@ public abstract class DAOGeneric<E> {
         this.entityClass = entityClass;
     }
 
-    public E find(String id) {
+    public E find(int id) {
         E entity = (E) session.get(entityClass, id);
         return entity;
     }

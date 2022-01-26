@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ModelRdv extends DefaultTableModel {
     List<Rdv> rendezvous;
-    String[] colNames = {"MEDNum", "CLINum", "DateRdv", "Heure", "Duree", "Prix"};
+    String[] colNames = {"RDVNum", "MEDNum", "CLINum", "DateRdv", "Heure", "Duree", "Prix"};
     HashSet<Rdv> hashSet = new HashSet<>();
 
     public ModelRdv(List<Rdv> rendezvous) {
@@ -43,31 +43,35 @@ public class ModelRdv extends DefaultTableModel {
         Object value = null;
         Rdv rdv = rendezvous.get(row);
         switch(column) {
-            case 0: {
-                value = rdv.getMedNum();
+            case 0 : {
+                value = rdv.getRdvNum();
                 break;
             }
             case 1 : {
-                value = rdv.getCliNum();
+                value = rdv.getMedNum();
                 break;
             }
             case 2 : {
-                value = rdv.getDateRdv();
+                value = rdv.getCliNum();
                 break;
             }
             case 3 : {
-                value = rdv.getHeure();
+                value = rdv.getDateRdv();
                 break;
             }
             case 4 : {
-                value = rdv.getDuree();
+                value = rdv.getHeure();
                 break;
             }
             case 5 : {
-                value = rdv.getPrix();
+                value = rdv.getDuree();
                 break;
             }
             case 6 : {
+                value = rdv.getPrix();
+                break;
+            }
+            case 7 : {
                 value = rdv.getCommentaires();
                 break;
             }
@@ -80,30 +84,33 @@ public class ModelRdv extends DefaultTableModel {
         Rdv rdv = rendezvous.get(row);
         switch(column) {
             case 0 : {
+                rdv.setRdvNum(Integer.parseInt(aValue.toString()));
+            }
+            case 1 : {
                 rdv.setMedNum(Integer.parseInt(aValue.toString()));
                 break;
             }
-            case 1 : {
+            case 2 : {
                 rdv.setCliNum(Integer.parseInt(aValue.toString()));
                 break;
             }
-            case 2 : {
+            case 3 : {
                 rdv.setDateRdv(aValue.toString());
                 break;
             }
-            case 3 : {
+            case 4 : {
                 rdv.setHeure(aValue.toString());
                 break;
             }
-            case 4 : {
+            case 5 : {
                 rdv.setDuree(Integer.parseInt(aValue.toString()));
                 break;
             }
-            case 5 : {
+            case 6 : {
                 rdv.setPrix(Integer.parseInt(aValue.toString()));
                 break;
             }
-            case 6 : {
+            case 7 : {
                 rdv.setCommentaires(aValue.toString());
                 break;
             }
@@ -117,13 +124,16 @@ public class ModelRdv extends DefaultTableModel {
         switch(columnIndex) {
             case 0 :
             case 1 :
-            case 4 :
-            case 5 : {
-                clazz = Integer.class;
-            }
             case 2 :
-            case 3 : {
+            case 5 :
+            case 6 : {
+                clazz = Integer.class;
+                break;
+            }
+            case 3 :
+            case 4 : {
                 clazz = String.class;
+                break;
             }
         }
         return clazz;

@@ -14,9 +14,9 @@ public class DAOCabinetMedical extends DAOGeneric {
         super(session, entityClass);
     }
 
-    public List<CabinetMedical> findById(int id) {
+    public CabinetMedical findById(int id) {
         Criteria criteria = session.createCriteria(entityClass);
         Criterion criterion = Restrictions.eq("cabNum", id);
-        return criteria.add(criterion).list();
+        return (CabinetMedical) criteria.add(criterion).list().get(0);
     }
 }

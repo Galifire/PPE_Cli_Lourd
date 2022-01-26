@@ -16,6 +16,7 @@ public class CreateRdvController {
         this.session = session;
 
         cr.setTitle("Créer un rendez-vous");
+        cr.getNumField().setEditable(false);
 
         cr.getButtonOK().addActionListener(e -> {
             submit();

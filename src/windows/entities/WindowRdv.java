@@ -13,6 +13,7 @@ public class WindowRdv extends JDialog {
     private JTextField dureeField;
     private JTextField prixField;
     private JTextField commentairesField;
+    private JTextField numField;
 
     public WindowRdv() {
         setContentPane(contentPane);
@@ -26,6 +27,10 @@ public class WindowRdv extends JDialog {
 
     public JButton getButtonCancel() {
         return buttonCancel;
+    }
+
+    public JTextField getNumField() {
+        return this.numField;
     }
 
     public JTextField getMedecinField() {

@@ -27,6 +27,7 @@ public class RDVController {
         for (int j = 0; j < data.size(); j++) {
             Rdv rdv = data.get(j);
             Object[] d = new Object[] {
+                    rdv.getRdvNum(),
                     rdv.getMedNum(),
                     rdv.getCliNum(),
                     rdv.getDateRdv(),
