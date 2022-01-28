@@ -28,12 +28,13 @@ public class CreateCabinetMedicalController {
     }
 
     public void submit() {
+        DAOCabinetMedical dao = new DAOCabinetMedical(session, CabinetMedical.class);
         CabinetMedical cm = new CabinetMedical();
+        cm.setCabNum((int) dao.count() + 1);
         cm.setNom(ccm.getNomField().getText());
         cm.setAdresse(ccm.getAdresseField().getText());
         cm.setEffectif(Integer.parseInt(ccm.getEffectifField().getText()));
         cm.setHoraires(ccm.getHorairesField().getText());
-        DAOCabinetMedical dao = new DAOCabinetMedical(session, CabinetMedical.class);
         dao.saveOrUpdate(cm);
         ccm.dispose();
     }

@@ -16,9 +16,7 @@ public class EditCabinetMedicalController {
         this.session = session;
         this.cm = cm;
 
-        ccm.setTitle("Éditer un médecin");
-
-        ccm.getNumField().setEditable(false);
+        init();
 
         ccm.getButtonOK().addActionListener(e -> {
             submit();
@@ -29,8 +27,19 @@ public class EditCabinetMedicalController {
         });
     }
 
+    public void init() {
+        ccm.setTitle("Éditer un médecin");
+
+        ccm.getNumField().setEditable(false);
+
+        ccm.getNumField().setText(cm.getCabNum().toString());
+        ccm.getNomField().setText(cm.getNom());
+        ccm.getAdresseField().setText(cm.getAdresse());
+        ccm.getEffectifField().setText(cm.getEffectif().toString());
+        ccm.getHorairesField().setText(cm.getHoraires());
+    }
+
     public void submit() {
-        CabinetMedical cm = new CabinetMedical();
         cm.setCabNum(Integer.parseInt(ccm.getNumField().getText()));
         cm.setNom(ccm.getNomField().getText());
         cm.setAdresse(ccm.getAdresseField().getText());

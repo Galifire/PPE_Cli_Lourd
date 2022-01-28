@@ -18,10 +18,6 @@ public class IdSelectorController {
         this.session = session;
         this.selectedTable = selectedTable;
 
-        id.getIdBox().addActionListener(e -> {
-            fillBox(selectedTable);
-        });
-
         id.getButtonOK().addActionListener(e -> {
             onOk(selectedTable);
         });
@@ -99,7 +95,60 @@ public class IdSelectorController {
                 break;
             }
         }
-        id.setVisible(true);
+    }
+
+    public void del(int tableIndex) {
+        id.getIdBox().removeAll();
+        int num = Integer.parseInt(id.getIdBox().getSelectedItem().toString());
+        switch(tableIndex) {
+            case 1 : {
+                DAOCabinetMedical dao = new DAOCabinetMedical(session, CabinetMedical.class);
+                CabinetMedical cabinetMedical = dao.findById(num);
+                dao.delete(cabinetMedical);
+                break;
+            } case 2 : {
+                DAOClient dao = new DAOClient(session, Client.class);
+                Client client = dao.findById(num);
+                dao.delete(client);
+                break;
+            } case 3 : {
+                DAOCommandes dao = new DAOCommandes(session, Commandes.class);
+                Commandes cde = dao.findById(num);
+                dao.delete(cde);
+                break;
+            } case 4 : {
+                DAOMedecins dao = new DAOMedecins(session, Medecins.class);
+                Medecins medecin = dao.findById(num);
+                dao.delete(medecin);
+                break;
+            } case 5 : {
+                DAOMedicaments dao = new DAOMedicaments(session, Medicaments.class);
+                Medicaments medic = dao.findById(num);
+                dao.delete(medic);
+                break;
+            } case 6 : {
+                DAOPharmacie dao = new DAOPharmacie(session, Pharmacie.class);
+                Pharmacie pharmacie = dao.findById(num);
+                dao.delete(pharmacie);
+                break;
+            } case 7 : {
+                DAOPharmacien dao = new DAOPharmacien(session, Pharmacien.class);
+                ArrayList<Pharmacien> list = dao.findAll();
+                Pharmacien pharmacien = dao.findById(num);
+                dao.delete(pharmacien);
+                break;
+            } case 8 : {
+                DAORdv dao = new DAORdv(session, Rdv.class);
+                Rdv rdv = dao.findById(num);
+                dao.delete(rdv);
+                break;
+            } case 9 : {
+                DAOStocks dao = new DAOStocks(session, Stocks.class);
+                Stocks stock = dao.findById(num);
+                dao.delete(stock);
+                break;
+            }
+        }
     }
 
     public void onOk(int tableIndex) {

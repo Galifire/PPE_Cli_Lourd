@@ -6,6 +6,7 @@ import controllers.entities.*;
 import dao.*;
 import entities.*;
 import org.hibernate.Session;
+import windows.admin.Erreur;
 import windows.admin.Logger;
 import windows.admin.Window;
 import windows.entities.*;
@@ -33,6 +34,8 @@ public class WindowController {
         window.getAddButton().addActionListener(e -> create());
 
         window.getEditButton().addActionListener(e -> edit());
+
+        window.getDeleteButton().addActionListener(e -> delete());
     }
 
     public void logout() {
@@ -40,6 +43,7 @@ public class WindowController {
         Logger l = new Logger();
         new LoggerController(l, session);
         l.setSize(800,600);
+        //l.setLocationRelativeTo(null);
         l.setVisible(true);
     }
 
@@ -94,6 +98,7 @@ public class WindowController {
                 WindowCommande cc = new WindowCommande();
                 new CreateCommandeController(cc, session);
                 cc.setSize(800,600);
+                //cc.setLocationRelativeTo(null);
                 cc.setVisible(true);
                 break;
             } case 4 : {
@@ -137,10 +142,35 @@ public class WindowController {
     }
 
     public void edit() {
-        IdSelector id = new IdSelector();
-        IdSelectorController idC = new IdSelectorController(id, session, window.getTableBox().getSelectedIndex());
-        id.setSize(800,600);
-        id.setVisible(true);
+        int tableIndex = window.getTableBox().getSelectedIndex();
+        if (tableIndex == 0) {
+            Erreur erreur = new Erreur();
+            new ErreurController(erreur, "Sélectionnez une table !");
+            erreur.setSize(400,200);
+            erreur.setVisible(true);
+        } else {
+            IdSelector id = new IdSelector();
+            IdSelectorController idC = new IdSelectorController(id, session, tableIndex);
+            idC.fillBox(tableIndex);
+            id.setSize(300,150);
+            id.setVisible(true);
+        }
+    }
+
+    public void delete() {
+        int tableIndex = window.getTableBox().getSelectedIndex();
+        if (tableIndex == 0) {
+            Erreur erreur = new Erreur();
+            new ErreurController(erreur, "Sélectionnez une table !");
+            erreur.setSize(400,200);
+            erreur.setVisible(true);
+        } else {
+            IdSelector id = new IdSelector();
+            IdSelectorController idC = new IdSelectorController(id, session, tableIndex);
+            idC.fillBox(tableIndex);
+            id.setSize(300,150);
+            id.setVisible(true);
+        }
     }
 
     public void fillTable(JTable table) {
