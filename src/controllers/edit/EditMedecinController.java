@@ -16,8 +16,7 @@ public class EditMedecinController {
         this.session = session;
         this.medecin = medecin;
 
-        cm.setTitle("Éditer un médecin");
-        cm.getNumField().setEditable(false);
+        init();
 
         cm.getButtonOK().addActionListener(e -> {
             submit();
@@ -26,6 +25,19 @@ public class EditMedecinController {
         cm.getButtonCancel().addActionListener(e -> {
             cancel();
         });
+    }
+
+    public void init() {
+        cm.setTitle("Éditer un médecin");
+        cm.getNumField().setEditable(false);
+
+        cm.getNumField().setText(medecin.getMedNum().toString());
+        cm.getNomField().setText(medecin.getNom());
+        cm.getPrenomField().setText(medecin.getPrenom());
+        cm.getAdresseField().setText(medecin.getAdresse());
+        cm.getEmailField().setText(medecin.getEmail());
+        cm.getTelField().setText(medecin.getTelephone());
+        cm.getCabField().setText(medecin.getCabNum().toString());
     }
 
     public void submit() {

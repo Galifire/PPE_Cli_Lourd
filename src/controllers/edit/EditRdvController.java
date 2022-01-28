@@ -17,7 +17,7 @@ public class EditRdvController {
         this.session = session;
         this.rdv = rdv;
 
-        cr.setTitle("Éditer un rendez-vous");
+        init();
 
         cr.getButtonOK().addActionListener(e -> {
             submit();
@@ -26,6 +26,20 @@ public class EditRdvController {
         cr.getButtonCancel().addActionListener(e -> {
             cancel();
         });
+    }
+
+    public void init() {
+        cr.setTitle("Éditer un rendez-vous");
+        cr.getNumField().setEditable(false);
+
+        cr.getNumField().setText(rdv.getRdvNum().toString());
+        cr.getMedecinField().setText(rdv.getMedNum().toString());
+        cr.getClientField().setText(rdv.getCliNum().toString());
+        cr.getDateField().setText(rdv.getDateRdv());
+        cr.getHeureField().setText(rdv.getHeure());
+        cr.getDureeField().setText(rdv.getDuree().toString());
+        cr.getPrixField().setText(rdv.getPrix().toString());
+        cr.getCommentairesField().setText(rdv.getCommentaires());
     }
 
     public void submit() {

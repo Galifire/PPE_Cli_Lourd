@@ -17,7 +17,7 @@ public class EditStockController {
         this.session = session;
         this.stock = stock;
 
-        cs.setTitle("Ajouter un stock");
+        init();
 
         cs.getButtonOK().addActionListener(e -> {
             submit();
@@ -26,6 +26,16 @@ public class EditStockController {
         cs.getButtonCancel().addActionListener(e -> {
             cancel();
         });
+    }
+
+    public void init() {
+        cs.setTitle("Ajouter un stock");
+        cs.getNumField().setEditable(false);
+
+        cs.getNumField().setText(stock.getStockNum().toString());
+        cs.getMedicField().setText(stock.getMedicNum().toString());
+        cs.getPharField().setText(stock.getPharNum().toString());
+        cs.getQteField().setText(stock.getQte().toString());
     }
 
     public void submit() {

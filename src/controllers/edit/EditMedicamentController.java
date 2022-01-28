@@ -16,8 +16,7 @@ public class EditMedicamentController {
         this.session = session;
         this.medic = medic;
 
-        cm.setTitle("Éditer un médicament");
-        cm.getNumField().setEditable(false);
+        init();
 
         cm.getButtonOK().addActionListener(e -> {
             submit();
@@ -26,6 +25,16 @@ public class EditMedicamentController {
         cm.getButtonCancel().addActionListener(e -> {
             cancel();
         });
+    }
+
+    public void init() {
+        cm.setTitle("Éditer un médicament");
+        cm.getNumField().setEditable(false);
+
+        cm.getNumField().setText(medic.getMedicNum().toString());
+        cm.getNomField().setText(medic.getNom());
+        cm.getRestrictionsField().setText(medic.getRestrictions());
+        cm.getDelaiField().setText(medic.getDelaiProduction().toString());
     }
 
     public void submit() {

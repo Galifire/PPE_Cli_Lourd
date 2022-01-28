@@ -16,8 +16,7 @@ public class EditClientController {
         this.session = session;
         this.client = client;
 
-        cc.setTitle("Éditer un client");
-        cc.getNumField().setEditable(false);
+        init();
 
         cc.getButtonOK().addActionListener(e -> {
             submit();
@@ -26,6 +25,18 @@ public class EditClientController {
         cc.getButtonCancel().addActionListener(e -> {
             cancel();
         });
+    }
+
+    public void init() {
+        cc.setTitle("Éditer un client");
+        cc.getNumField().setEditable(false);
+
+        cc.getNumField().setText((client.getCliNum()).toString());
+        cc.getNomField().setText(client.getNom());
+        cc.getPrenomField().setText(client.getPrenom());
+        cc.getAdresseField().setText(client.getAdresse());
+        cc.getEmailField().setText(client.getEmail());
+        cc.getTelField().setText(client.getTelephone());
     }
 
     public void submit() {

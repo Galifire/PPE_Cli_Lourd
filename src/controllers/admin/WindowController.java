@@ -43,7 +43,6 @@ public class WindowController {
         Logger l = new Logger();
         new LoggerController(l, session);
         l.setSize(800,600);
-        //l.setLocationRelativeTo(null);
         l.setVisible(true);
     }
 
@@ -150,7 +149,7 @@ public class WindowController {
             erreur.setVisible(true);
         } else {
             IdSelector id = new IdSelector();
-            IdSelectorController idC = new IdSelectorController(id, session, tableIndex);
+            IdSelectorController idC = new IdSelectorController(id, session, tableIndex, "edit");
             idC.fillBox(tableIndex);
             id.setSize(300,150);
             id.setVisible(true);
@@ -166,10 +165,11 @@ public class WindowController {
             erreur.setVisible(true);
         } else {
             IdSelector id = new IdSelector();
-            IdSelectorController idC = new IdSelectorController(id, session, tableIndex);
+            IdSelectorController idC = new IdSelectorController(id, session, tableIndex, "delete");
             idC.fillBox(tableIndex);
             id.setSize(300,150);
             id.setVisible(true);
+            idC.del(tableIndex);
         }
     }
 

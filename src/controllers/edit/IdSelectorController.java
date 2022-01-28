@@ -12,11 +12,13 @@ public class IdSelectorController {
     IdSelector id;
     Session session;
     int selectedTable;
+    String action;
 
-    public IdSelectorController(IdSelector id, Session session, int selectedTable) {
+    public IdSelectorController(IdSelector id, Session session, int selectedTable, String action) {
         this.id = id;
         this.session = session;
         this.selectedTable = selectedTable;
+        this.action = action;
 
         id.getButtonOK().addActionListener(e -> {
             onOk(selectedTable);
@@ -153,71 +155,73 @@ public class IdSelectorController {
 
     public void onOk(int tableIndex) {
         id.dispose();
-        int idSelected = id.getIdBox().getSelectedIndex() + 1;
-        switch(tableIndex) {
-            case 1 : {
-                DAOCabinetMedical dao = new DAOCabinetMedical(session, CabinetMedical.class);
-                WindowCabinetMedical wcm = new WindowCabinetMedical();
-                new EditCabinetMedicalController(wcm, session,dao.findById(idSelected));
-                wcm.setSize(800,600);
-                wcm.setVisible(true);
-                break;
-            } case 2 : {
-                DAOClient dao = new DAOClient(session, Client.class);
-                WindowClient wc = new WindowClient();
-                new EditClientController(wc, session, dao.findById(idSelected));
-                wc.setSize(800,600);
-                wc.setVisible(true);
-                break;
-            } case 3 : {
-                DAOCommandes dao = new DAOCommandes(session, Commandes.class);
-                WindowCommande wc = new WindowCommande();
-                new EditCommandeController(wc, session, dao.findById(idSelected));
-                wc.setSize(800,600);
-                wc.setVisible(true);
-                break;
-            } case 4 : {
-                DAOMedecins dao = new DAOMedecins(session, Medecins.class);
-                WindowMedecin wm = new WindowMedecin();
-                new EditMedecinController(wm, session, dao.findById(idSelected));
-                wm.setSize(800,600);
-                wm.setVisible(true);
-                break;
-            } case 5 : {
-                DAOMedicaments dao = new DAOMedicaments(session, Medicaments.class);
-                WindowMedicament wm = new WindowMedicament();
-                new EditMedicamentController(wm, session, dao.findById(idSelected));
-                wm.setSize(800,600);
-                wm.setVisible(true);
-                break;
-            } case 6 : {
-                DAOPharmacie dao = new DAOPharmacie(session, Pharmacie.class);
-                WindowPharmacie wp = new WindowPharmacie();
-                new EditPharmacieController(wp, session, dao.findById(idSelected));
-                wp.setSize(800,600);
-                wp.setVisible(true);
-                break;
-            } case 7 : {
-                DAOPharmacien dao = new DAOPharmacien(session, Pharmacien.class);
-                WindowPharmacien wp = new WindowPharmacien();
-                new EditPharmacienController(wp, session, dao.findById(idSelected));
-                wp.setSize(800,600);
-                wp.setVisible(true);
-                break;
-            } case 8 : {
-                DAORdv dao = new DAORdv(session, Rdv.class);
-                WindowRdv wr = new WindowRdv();
-                new EditRdvController(wr, session, dao.findById(idSelected));
-                wr.setSize(800,600);
-                wr.setVisible(true);
-                break;
-            } case 9 : {
-                DAOStocks dao = new DAOStocks(session, Rdv.class);
-                WindowStock ws = new WindowStock();
-                new EditStockController(ws, session, dao.findById(idSelected));
-                ws.setSize(800,600);
-                ws.setVisible(true);
-                break;
+        if (action == "edit") {
+            int idSelected = id.getIdBox().getSelectedIndex() + 1;
+            switch(tableIndex) {
+                case 1 : {
+                    DAOCabinetMedical dao = new DAOCabinetMedical(session, CabinetMedical.class);
+                    WindowCabinetMedical wcm = new WindowCabinetMedical();
+                    new EditCabinetMedicalController(wcm, session,dao.findById(idSelected));
+                    wcm.setSize(800,600);
+                    wcm.setVisible(true);
+                    break;
+                } case 2 : {
+                    DAOClient dao = new DAOClient(session, Client.class);
+                    WindowClient wc = new WindowClient();
+                    new EditClientController(wc, session, dao.findById(idSelected));
+                    wc.setSize(800,600);
+                    wc.setVisible(true);
+                    break;
+                } case 3 : {
+                    DAOCommandes dao = new DAOCommandes(session, Commandes.class);
+                    WindowCommande wc = new WindowCommande();
+                    new EditCommandeController(wc, session, dao.findById(idSelected));
+                    wc.setSize(800,600);
+                    wc.setVisible(true);
+                    break;
+                } case 4 : {
+                    DAOMedecins dao = new DAOMedecins(session, Medecins.class);
+                    WindowMedecin wm = new WindowMedecin();
+                    new EditMedecinController(wm, session, dao.findById(idSelected));
+                    wm.setSize(800,600);
+                    wm.setVisible(true);
+                    break;
+                } case 5 : {
+                    DAOMedicaments dao = new DAOMedicaments(session, Medicaments.class);
+                    WindowMedicament wm = new WindowMedicament();
+                    new EditMedicamentController(wm, session, dao.findById(idSelected));
+                    wm.setSize(800,600);
+                    wm.setVisible(true);
+                    break;
+                } case 6 : {
+                    DAOPharmacie dao = new DAOPharmacie(session, Pharmacie.class);
+                    WindowPharmacie wp = new WindowPharmacie();
+                    new EditPharmacieController(wp, session, dao.findById(idSelected));
+                    wp.setSize(800,600);
+                    wp.setVisible(true);
+                    break;
+                } case 7 : {
+                    DAOPharmacien dao = new DAOPharmacien(session, Pharmacien.class);
+                    WindowPharmacien wp = new WindowPharmacien();
+                    new EditPharmacienController(wp, session, dao.findById(idSelected));
+                    wp.setSize(800,600);
+                    wp.setVisible(true);
+                    break;
+                } case 8 : {
+                    DAORdv dao = new DAORdv(session, Rdv.class);
+                    WindowRdv wr = new WindowRdv();
+                    new EditRdvController(wr, session, dao.findById(idSelected));
+                    wr.setSize(800,600);
+                    wr.setVisible(true);
+                    break;
+                } case 9 : {
+                    DAOStocks dao = new DAOStocks(session, Rdv.class);
+                    WindowStock ws = new WindowStock();
+                    new EditStockController(ws, session, dao.findById(idSelected));
+                    ws.setSize(800,600);
+                    ws.setVisible(true);
+                    break;
+                }
             }
         }
     }

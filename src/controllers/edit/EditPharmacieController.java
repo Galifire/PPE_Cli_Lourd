@@ -16,8 +16,7 @@ public class EditPharmacieController {
         this.session = session;
         this.ph = ph;
 
-        cp.setTitle("Éditer une pharmacie");
-        cp.getNumField().setEditable(false);
+        init();
 
         cp.getButtonOK().addActionListener(e -> {
             submit();
@@ -26,6 +25,18 @@ public class EditPharmacieController {
         cp.getButtonCancel().addActionListener(e -> {
             cancel();
         });
+    }
+
+    public void init() {
+        cp.setTitle("Éditer une pharmacie");
+        cp.getNumField().setEditable(false);
+
+        cp.getNumField().setText(ph.getPharNum().toString());
+        cp.getNomField().setText(ph.getNom());
+        cp.getVilleField().setText(ph.getVille());
+        cp.getCodePostalField().setText(ph.getCodePostal());
+        cp.getAdresseField().setText(ph.getAdresse());
+        cp.getEffectifField().setText(ph.getEffectif().toString());
     }
 
     public void submit() {

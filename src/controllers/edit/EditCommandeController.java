@@ -19,8 +19,7 @@ public class EditCommandeController {
         this.session = session;
         this.cde = cde;
 
-        cc.setTitle("Éditer une commande");
-        cc.getNumField().setEditable(false);
+        init();
 
         cc.getButtonOK().addActionListener(e -> {
             submit();
@@ -29,6 +28,17 @@ public class EditCommandeController {
         cc.getButtonCancel().addActionListener(e -> {
             cancel();
         });
+    }
+
+    public void init() {
+        cc.setTitle("Éditer une commande");
+        cc.getNumField().setEditable(false);
+
+        cc.getNumField().setText(cde.getCdeNum().toString());
+        cc.getCliField().setText(cde.getCliNum().toString());
+        cc.getMedicField().setText(cde.getMedicNum().toString());
+        cc.getDateField().setText(cde.getDateCde());
+        cc.getQtyField().setText(cde.getQte().toString());
     }
 
     public void submit() {
