@@ -10,6 +10,8 @@ public class Main extends JDialog {
     public Main() {
         setContentPane(contentPane);
         setModal(true);
+        setSize(800,600);
+        setLocationRelativeTo(null);
     }
 
     public JButton getRegisterBtn() {

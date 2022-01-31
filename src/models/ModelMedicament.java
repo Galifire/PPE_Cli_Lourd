@@ -35,7 +35,7 @@ public class ModelMedicament extends DefaultTableModel {
 
     @Override
     public boolean isCellEditable(int row, int column) {
-        return column != 0;
+        return false;
     }
 
     @Override

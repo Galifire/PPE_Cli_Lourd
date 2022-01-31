@@ -17,6 +17,8 @@ public class WindowPharmacien extends JDialog {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
+        setSize(800,600);
+        setLocationRelativeTo(null);
     }
 
     public JButton getButtonOK() {

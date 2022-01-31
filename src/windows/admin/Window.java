@@ -16,6 +16,8 @@ public class Window extends JDialog {
     public Window() {
         setContentPane(contentPane);
         setModal(true);
+        setSize(1600,900);
+        setLocationRelativeTo(null);
     }
 
     public JPanel getTablePanel() {

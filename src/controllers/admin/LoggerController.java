@@ -7,6 +7,8 @@ import entities.User;
 import windows.admin.Register;
 import windows.admin.Window;
 import org.hibernate.Session;
+
+import javax.swing.*;
 import java.security.NoSuchAlgorithmException;
 
 public class LoggerController {
@@ -40,14 +42,12 @@ public class LoggerController {
             System.out.println(user.getUsername());
             logger.dispose();
             Window w = new Window();
-            new WindowController(w, session, user);
-            w.setSize(1600,900);
+            new WindowController(w, session, user, new JTable());
             w.setVisible(true);
         } else {
-            Erreur erreur = new Erreur();
-            new ErreurController(erreur, "nom d'utilisateur ou mot de passe incorrect, recommencez.");
-            erreur.setSize(400,200);
-            erreur.setVisible(true);
+            Erreur err = new Erreur();
+            new ErreurController(err, "nom d'utilisateur ou mot de passe incorrect, recommencez.");
+            err.setVisible(true);
         }
     }
 
@@ -59,7 +59,6 @@ public class LoggerController {
         logger.dispose();
         Register register = new Register();
         new RegisterController(register, session);
-        register.setSize(800,600);
         register.setVisible(true);
     }
 }

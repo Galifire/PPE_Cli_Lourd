@@ -13,6 +13,8 @@ public class IdSelector extends JDialog {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
+        setSize(300,150);
+        setLocationRelativeTo(null);
     }
 
     public JButton getButtonOK() {

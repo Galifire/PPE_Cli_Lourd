@@ -14,6 +14,8 @@ public class Logger extends JDialog {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonLogin);
+        setSize(800,600);
+        setLocationRelativeTo(null);
     }
 
     public static void main(String[] args) {

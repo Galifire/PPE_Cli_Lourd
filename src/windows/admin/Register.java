@@ -18,6 +18,8 @@ public class Register extends JDialog {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonRegister);
+        setSize(800,600);
+        setLocationRelativeTo(null);
     }
 
     public JButton getMainBtn() {

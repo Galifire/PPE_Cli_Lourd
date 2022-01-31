@@ -11,6 +11,8 @@ public class Erreur extends JDialog {
     public Erreur() {
         setContentPane(contentPane);
         setModal(true);
+        setSize(400,200);
+        setLocationRelativeTo(null);
     }
 
     public JButton getOkBtn() {

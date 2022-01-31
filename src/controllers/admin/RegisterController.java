@@ -36,7 +36,6 @@ public class RegisterController {
         register.dispose();
         Main main = new Main();
         new MainController(main, session);
-        main.setSize(800,600);
         main.setVisible(true);
     }
 
@@ -57,12 +56,15 @@ public class RegisterController {
             register.dispose();
             Logger logger = new Logger();
             new LoggerController(logger, session);
+            logger.setVisible(true);
         } else if (!(Objects.equals(pwd, pwdConfirmed))) {
             Erreur erreur = new Erreur();
             new ErreurController(erreur, "mots de passe différents, recommencez.");
+            erreur.setVisible(true);
         } else if (!dao.userNotExists(username)) {
             Erreur erreur = new Erreur();
             new ErreurController(erreur, "utilisateur déjà existant");
+            erreur.setVisible(true);
         }
     }
 

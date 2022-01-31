@@ -4,16 +4,16 @@ import windows.admin.Erreur;
 
 public class ErreurController {
 
-    Erreur erreur;
+    Erreur e;
     String text;
 
-    public ErreurController(Erreur erreur, String text) {
-        this.erreur = erreur;
+    public ErreurController(Erreur e, String text) {
+        this.e = e;
         this.text = text;
 
-        erreur.getErrorText().setText(text);
+        e.getErrorText().setText(text);
 
-        erreur.getOkBtn().addActionListener(e -> erreur.dispose());
+        e.getOkBtn().addActionListener(l -> e.dispose());
     }
 
 
