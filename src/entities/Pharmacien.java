@@ -5,7 +5,9 @@ import javax.persistence.*;
 @Entity
 @Table(name = "pharmacien")
 public class Pharmacien {
+
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "PHNum")
     private Integer phNum;
 

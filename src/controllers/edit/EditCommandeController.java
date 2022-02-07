@@ -48,14 +48,13 @@ public class EditCommandeController {
             e.setSize(400,200);
             e.setVisible(true);
         } else {
-            Commandes c = new Commandes();
-            c.setCdeNum(Integer.parseInt(cc.getNumField().getText()));
-            c.setCliNum(Integer.parseInt(cc.getCliField().getText()));
-            c.setMedicNum(Integer.parseInt(cc.getMedicField().getText()));
-            c.setDateCde(cc.getDateField().getText());
-            c.setQte(Integer.parseInt(cc.getQtyField().getText()));
+            cde.setCdeNum(Integer.parseInt(cc.getNumField().getText()));
+            cde.setCliNum(Integer.parseInt(cc.getCliField().getText()));
+            cde.setMedicNum(Integer.parseInt(cc.getMedicField().getText()));
+            cde.setDateCde(cc.getDateField().getText());
+            cde.setQte(Integer.parseInt(cc.getQtyField().getText()));
             DAOCabinetMedical dao = new DAOCabinetMedical(session, CabinetMedical.class);
-            dao.saveOrUpdate(c);
+            dao.saveOrUpdate(cde);
             cc.dispose();
         }
     }

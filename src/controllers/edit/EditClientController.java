@@ -9,12 +9,12 @@ public class EditClientController {
 
     WindowClient cc;
     Session session;
-    Client client;
+    Client c;
 
-    public EditClientController(WindowClient cc, Session session, Client client) {
+    public EditClientController(WindowClient cc, Session session, Client c) {
         this.cc = cc;
         this.session = session;
-        this.client = client;
+        this.c = c;
 
         init();
 
@@ -31,16 +31,15 @@ public class EditClientController {
         cc.setTitle("Éditer un client");
         cc.getNumField().setEditable(false);
 
-        cc.getNumField().setText((client.getCliNum()).toString());
-        cc.getNomField().setText(client.getNom());
-        cc.getPrenomField().setText(client.getPrenom());
-        cc.getAdresseField().setText(client.getAdresse());
-        cc.getEmailField().setText(client.getEmail());
-        cc.getTelField().setText(client.getTelephone());
+        cc.getNumField().setText((c.getCliNum()).toString());
+        cc.getNomField().setText(c.getNom());
+        cc.getPrenomField().setText(c.getPrenom());
+        cc.getAdresseField().setText(c.getAdresse());
+        cc.getEmailField().setText(c.getEmail());
+        cc.getTelField().setText(c.getTelephone());
     }
 
     public void submit() {
-        Client c = new Client();
         c.setCliNum(Integer.parseInt(cc.getNumField().getText()));
         c.setNom(cc.getNomField().getText());
         c.setPrenom(cc.getPrenomField().getText());

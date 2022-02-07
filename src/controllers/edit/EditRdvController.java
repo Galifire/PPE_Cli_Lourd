@@ -1,10 +1,13 @@
 package controllers.edit;
 
 import controllers.admin.ErreurController;
+import dao.DAORdv;
 import entities.Rdv;
 import org.hibernate.Session;
 import windows.admin.Erreur;
 import windows.entities.WindowRdv;
+
+import java.util.ArrayList;
 
 public class EditRdvController {
 
@@ -29,12 +32,20 @@ public class EditRdvController {
     }
 
     public void init() {
-        cr.setTitle("Éditer un rendez-vous");
+        DAORdv dao = new DAORdv(session, Rdv.class);
+        ArrayList<Rdv> rd = dao.findAll();
+        for(Rdv r : rd) {
+            cr.getMedecinField().addItem(r.getMedNum());
+            cr.getClientField().addItem(r.getCliNum());
+
+        }
+
+        cr.setTitle("Créer un rendez-vous");
         cr.getNumField().setEditable(false);
 
         cr.getNumField().setText(rdv.getRdvNum().toString());
-        cr.getMedecinField().setText(rdv.getMedNum().toString());
-        cr.getClientField().setText(rdv.getCliNum().toString());
+        cr.getMedecinField().setSelectedItem(rdv.getMedNum());
+        cr.getClientField().setSelectedItem(rdv.getCliNum());
         cr.getDateField().setText(rdv.getDateRdv());
         cr.getHeureField().setText(rdv.getHeure());
         cr.getDureeField().setText(rdv.getDuree().toString());
@@ -43,20 +54,21 @@ public class EditRdvController {
     }
 
     public void submit() {
-        if ((cr.getMedecinField().getText().isEmpty()) || (cr.getClientField().getText().isEmpty()) || (cr.getDateField().getText().isEmpty())) {
+        if (cr.getDateField().getText().isEmpty()) {
             Erreur e = new Erreur();
-            new ErreurController(e, "La clé primaire ne peut pas être vide, réessayez.");
+            new ErreurController(e, "La date ne peut pas être vide, réessayez.");
             e.setSize(400,200);
             e.setVisible(true);
         } else {
-            Rdv rdv = new Rdv();
-            rdv.setMedNum(Integer.parseInt(cr.getMedecinField().getText()));
-            rdv.setCliNum(Integer.parseInt(cr.getClientField().getText()));
+            rdv.setMedNum(Integer.parseInt(cr.getMedecinField().getSelectedItem().toString()));
+            rdv.setCliNum(Integer.parseInt(cr.getClientField().getSelectedItem().toString()));
             rdv.setDateRdv(cr.getDateField().getText());
             rdv.setHeure(cr.getHeureField().getText());
             rdv.setDuree(Integer.parseInt(cr.getDureeField().getText()));
             rdv.setPrix(Integer.parseInt(cr.getPrixField().getText()));
             rdv.setCommentaires(cr.getCommentairesField().getText());
+            DAORdv dao = new DAORdv(session, Rdv.class);
+            dao.saveOrUpdate(rdv);
             cr.dispose();
         }
     }

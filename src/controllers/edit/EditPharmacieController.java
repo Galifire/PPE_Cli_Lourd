@@ -40,14 +40,13 @@ public class EditPharmacieController {
     }
 
     public void submit() {
-        Pharmacie p = new Pharmacie();
-        p.setNom(cp.getNomField().getText());
-        p.setVille(cp.getVilleField().getText());
-        p.setCodePostal(cp.getCodePostalField().getText());
-        p.setAdresse(cp.getAdresseField().getText());
-        p.setEffectif(Integer.parseInt(cp.getEffectifField().getText()));
+        ph.setNom(cp.getNomField().getText());
+        ph.setVille(cp.getVilleField().getText());
+        ph.setCodePostal(cp.getCodePostalField().getText());
+        ph.setAdresse(cp.getAdresseField().getText());
+        ph.setEffectif(Integer.parseInt(cp.getEffectifField().getText()));
         DAOPharmacie dao = new DAOPharmacie(session, Pharmacie.class);
-        dao.saveOrUpdate(p);
+        dao.saveOrUpdate(ph);
         cp.dispose();
     }
 

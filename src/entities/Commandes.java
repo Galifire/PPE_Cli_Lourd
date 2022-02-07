@@ -7,6 +7,7 @@ import java.io.Serializable;
 @Table(name = "commandes")
 public class Commandes implements Serializable {
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "CDENum")
     private Integer cdeNum;
 

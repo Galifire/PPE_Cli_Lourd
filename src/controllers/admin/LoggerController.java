@@ -45,9 +45,9 @@ public class LoggerController {
             new WindowController(w, session, user, new JTable());
             w.setVisible(true);
         } else {
-            Erreur err = new Erreur();
-            new ErreurController(err, "nom d'utilisateur ou mot de passe incorrect, recommencez.");
-            err.setVisible(true);
+            Erreur e = new Erreur();
+            new ErreurController(e, "nom d'utilisateur ou mot de passe incorrect, recommencez.");
+            e.setVisible(true);
         }
     }
 
@@ -57,8 +57,8 @@ public class LoggerController {
 
     public void register() {
         logger.dispose();
-        Register register = new Register();
-        new RegisterController(register, session);
-        register.setVisible(true);
+        Register r = new Register();
+        new RegisterController(r, session);
+        r.setVisible(true);
     }
 }

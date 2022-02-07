@@ -12,6 +12,8 @@ import windows.entities.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
+import static sun.security.krb5.Config.refresh;
+
 public class WindowController {
 
     Window window;
@@ -38,7 +40,6 @@ public class WindowController {
 
         window.getDeleteButton().addActionListener(e -> delete());
     }
-
     public void logout() {
         window.dispose();
         Logger l = new Logger();

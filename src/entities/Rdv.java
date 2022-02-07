@@ -8,6 +8,7 @@ import java.io.Serializable;
 public class Rdv implements Serializable {
 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "RDVNum")
     private Integer rdvNum;
 

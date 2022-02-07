@@ -21,11 +21,4 @@ public class Main extends JDialog {
     public JButton getLoginBtn() {
         return this.loginButton;
     }
-
-    public static void main(String[] args) {
-        Main dialog = new Main();
-        dialog.pack();
-        dialog.setVisible(true);
-        System.exit(0);
-    }
 }

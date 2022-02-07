@@ -9,12 +9,12 @@ public class EditMedecinController {
 
     WindowMedecin cm;
     Session session;
-    Medecins medecin;
+    Medecins m;
 
-    public EditMedecinController(WindowMedecin cm, Session session, Medecins medecin) {
+    public EditMedecinController(WindowMedecin cm, Session session, Medecins m) {
         this.cm = cm;
         this.session = session;
-        this.medecin = medecin;
+        this.m = m;
 
         init();
 
@@ -31,17 +31,16 @@ public class EditMedecinController {
         cm.setTitle("Éditer un médecin");
         cm.getNumField().setEditable(false);
 
-        cm.getNumField().setText(medecin.getMedNum().toString());
-        cm.getNomField().setText(medecin.getNom());
-        cm.getPrenomField().setText(medecin.getPrenom());
-        cm.getAdresseField().setText(medecin.getAdresse());
-        cm.getEmailField().setText(medecin.getEmail());
-        cm.getTelField().setText(medecin.getTelephone());
-        cm.getCabField().setText(medecin.getCabNum().toString());
+        cm.getNumField().setText(m.getMedNum().toString());
+        cm.getNomField().setText(m.getNom());
+        cm.getPrenomField().setText(m.getPrenom());
+        cm.getAdresseField().setText(m.getAdresse());
+        cm.getEmailField().setText(m.getEmail());
+        cm.getTelField().setText(m.getTelephone());
+        cm.getCabField().setText(m.getCabNum().toString());
     }
 
     public void submit() {
-        Medecins m = new Medecins();
         m.setMedNum(Integer.parseInt(cm.getNumField().getText()));
         m.setNom(cm.getNomField().getText());
         m.setPrenom(cm.getPrenomField().getText());

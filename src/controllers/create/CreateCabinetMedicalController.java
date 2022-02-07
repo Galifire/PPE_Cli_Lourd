@@ -14,7 +14,7 @@ public class CreateCabinetMedicalController {
         this.ccm = ccm;
         this.session = session;
 
-        ccm.setTitle("Créer un médecin");
+        ccm.setTitle("Créer un cabinet médical");
 
         ccm.getNumField().setEditable(false);
 

@@ -8,8 +8,10 @@ import java.io.Serializable;
 public class Stocks implements Serializable {
 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "STOCKNum")
     private Integer stockNum;
+
     @Column(name = "MEDICNum")
     private Integer medicNum;
 

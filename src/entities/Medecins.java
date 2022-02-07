@@ -7,6 +7,7 @@ import java.io.Serializable;
 @Table(name = "medecins")
 public class Medecins implements Serializable {
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "MEDNum")
     private Integer medNum;
 

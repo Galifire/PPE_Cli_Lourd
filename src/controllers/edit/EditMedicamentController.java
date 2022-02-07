@@ -9,12 +9,12 @@ public class EditMedicamentController {
 
     WindowMedicament cm;
     Session session;
-    Medicaments medic;
+    Medicaments m;
 
-    public EditMedicamentController(WindowMedicament cm, Session session, Medicaments medic) {
+    public EditMedicamentController(WindowMedicament cm, Session session, Medicaments m) {
         this.cm = cm;
         this.session = session;
-        this.medic = medic;
+        this.m = m;
 
         init();
 
@@ -31,14 +31,13 @@ public class EditMedicamentController {
         cm.setTitle("Éditer un médicament");
         cm.getNumField().setEditable(false);
 
-        cm.getNumField().setText(medic.getMedicNum().toString());
-        cm.getNomField().setText(medic.getNom());
-        cm.getRestrictionsField().setText(medic.getRestrictions());
-        cm.getDelaiField().setText(medic.getDelaiProduction().toString());
+        cm.getNumField().setText(m.getMedicNum().toString());
+        cm.getNomField().setText(m.getNom());
+        cm.getRestrictionsField().setText(m.getRestrictions());
+        cm.getDelaiField().setText(m.getDelaiProduction().toString());
     }
 
     public void submit() {
-        Medicaments m = new Medicaments();
         m.setMedicNum(Integer.parseInt(cm.getNumField().getText()));
         m.setNom(cm.getNomField().getText());
         m.setRestrictions(cm.getRestrictionsField().getText());

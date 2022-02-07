@@ -15,6 +15,4 @@ public class ErreurController {
 
         e.getOkBtn().addActionListener(l -> e.dispose());
     }
-
-
 }

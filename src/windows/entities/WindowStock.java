@@ -6,8 +6,8 @@ public class WindowStock extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
-    private JTextField medicField;
-    private JTextField pharField;
+    private JComboBox medicField;
+    private JComboBox pharField;
     private JTextField qteField;
     private JTextField numField;
 
@@ -31,11 +31,11 @@ public class WindowStock extends JDialog {
         return this.numField;
     }
 
-    public JTextField getMedicField() {
+    public JComboBox getMedicField() {
         return medicField;
     }
 
-    public JTextField getPharField() {
+    public JComboBox getPharField() {
         return pharField;
     }
 

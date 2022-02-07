@@ -30,10 +30,7 @@ public class CreateUserController {
 
     public void submit() {
         if (cu.getIdField().getText().isEmpty()) {
-            Erreur e = new Erreur();
-            new ErreurController(e, "La clé primaire ne peut pas être vide, réessayez.");
-            e.setSize(400,200);
-            e.setVisible(true);
+            new ErreurController(new Erreur(), "La clé primaire ne peut pas être vide, réessayez.");
         } else {
             User u = new User();
             DAOUser dao = new DAOUser(session, User.class);

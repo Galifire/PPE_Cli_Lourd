@@ -21,15 +21,15 @@ public class MainController {
 
     public void register() {
         main.dispose();
-        Register register = new Register();
-        new RegisterController(register, session);
-        register.setVisible(true);
+        Register r = new Register();
+        new RegisterController(r, session);
+        r.setVisible(true);
     }
 
     public void logging() {
         main.dispose();
-        Logger logger = new Logger();
-        new LoggerController(logger, session);
-        logger.setVisible(true);
+        Logger l = new Logger();
+        new LoggerController(l, session);
+        l.setVisible(true);
     }
 }

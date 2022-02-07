@@ -14,9 +14,8 @@ public class App {
         t.init();
         SessionFactory sessFac = HibernateUtil.getSessionFactory();
         Session session = sessFac.openSession();
-        Main main = new Main();
-        new MainController(main, session);
-        main.setSize(800,600);
-        main.setVisible(true);
+        Main m = new Main();
+        new MainController(m, session);
+        m.setVisible(true);
     }
 }

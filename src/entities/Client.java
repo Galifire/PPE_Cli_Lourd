@@ -6,7 +6,9 @@ import java.io.Serializable;
 @Entity
 @Table(name = "client")
 public class Client implements Serializable {
+
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "CLINum")
     private Integer cliNum;
 

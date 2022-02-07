@@ -6,8 +6,8 @@ public class WindowRdv extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
-    private JTextField medecinField;
-    private JTextField clientField;
+    private JComboBox medecinField;
+    private JComboBox clientField;
     private JTextField dateField;
     private JTextField heureField;
     private JTextField dureeField;
@@ -35,11 +35,11 @@ public class WindowRdv extends JDialog {
         return this.numField;
     }
 
-    public JTextField getMedecinField() {
+    public JComboBox getMedecinField() {
         return medecinField;
     }
 
-    public JTextField getClientField() {
+    public JComboBox getClientField() {
         return clientField;
     }
 

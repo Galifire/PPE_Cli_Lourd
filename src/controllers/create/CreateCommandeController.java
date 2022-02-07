@@ -31,10 +31,7 @@ public class CreateCommandeController {
 
     public void submit() {
         if (cc.getCliField().getText().isEmpty() || cc.getMedicField().getText().isEmpty()) {
-            Erreur e = new Erreur();
-            new ErreurController(e, "La clé primaire ne peut pas être vide, réessayez.");
-            e.setSize(400,200);
-            e.setVisible(true);
+            new ErreurController(new Erreur(), "La clé primaire ne peut pas être vide, réessayez.");
         } else {
             Commandes c = new Commandes();
             c.setCliNum(Integer.parseInt(cc.getCliField().getText()));
