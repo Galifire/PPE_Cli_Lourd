@@ -18,6 +18,13 @@ public class WindowController {
     User user;
     JTable table;
 
+    /**
+     *
+     * @param window fenêtre window, la principale
+     * @param session données de session
+     * @param user données de l'utilisateur
+     * @param table structure de la table
+     */
     public WindowController(Window window, Session session, User user, JTable table) {
         this.window = window;
         this.session = session;
@@ -37,6 +44,10 @@ public class WindowController {
 
         window.getDeleteButton().addActionListener(e -> delete());
     }
+
+    /**
+     * permet de se déconnecter
+     */
     public void logout() {
         window.dispose();
         Logger l = new Logger();
@@ -44,6 +55,9 @@ public class WindowController {
         l.setVisible(true);
     }
 
+    /**
+     * Permet d'afficher la structure de la table, en fonction de celle sélectionnée dans la combo box
+     */
     public void addTable() {
         switch (window.getTableBox().getSelectedIndex()) {
             case 1 : {
@@ -78,6 +92,9 @@ public class WindowController {
         fillTable(table);
     }
 
+    /**
+     * Permet de lancer la fenêtre et tout le processus de création de données en fonction de la table sélectionnée
+     */
     public void create() {
         switch (window.getTableBox().getSelectedIndex()) {
             case 1 : {
@@ -130,6 +147,9 @@ public class WindowController {
         table.repaint();
     }
 
+    /**
+     * Permet la mise à jour de données, en fonction de la table et de la ligne sélectionnée
+     */
     public void edit() {
         int id = Integer.parseInt(table.getValueAt(table.getSelectedRow(), 0).toString());
         switch (window.getTableBox().getSelectedIndex()) {
@@ -201,6 +221,9 @@ public class WindowController {
         table.repaint();
     }
 
+    /**
+     * Permet la supression de données, en fonction de la table et de la ligne sélectionnée
+     */
     public void delete() {
         int index = window.getTableBox().getSelectedIndex();
         try {
@@ -213,6 +236,10 @@ public class WindowController {
         table.repaint();
     }
 
+    /**
+     *
+     * @param table structure de la table passée en paramètre
+     */
     public void fillTable(JTable table) {
         table.setSize((int) (0.8*window.getWidth()), (int) (0.8*window.getHeight()));
         window.getDataScrolLPane().setViewportView(table);
