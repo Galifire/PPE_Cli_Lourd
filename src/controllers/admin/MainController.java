@@ -10,6 +10,12 @@ public class MainController {
     Main main;
     Session session;
 
+    /**
+     *
+     * @param main fenêtre main, celle générale
+     * @param session données de session
+     */
+
     public MainController(Main main, Session session) {
         this.main = main;
         this.session = session;

@@ -10,6 +10,11 @@ public class CreateCabinetMedicalController {
     WindowCabinetMedical ccm;
     Session session;
 
+    /**
+     *
+     * @param ccm fenêtre de création d'un cabinet médical
+     * @param session données de session
+     */
     public CreateCabinetMedicalController(WindowCabinetMedical ccm, Session session) {
         this.ccm = ccm;
         this.session = session;

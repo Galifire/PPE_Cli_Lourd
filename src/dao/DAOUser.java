@@ -13,10 +13,20 @@ import java.util.List;
 
 public class DAOUser extends DAOGeneric {
 
+    /**
+     *
+     * @param session données de session
+     * @param entityClass permet de déterminer dynamiquement la classe utilisée
+     */
     public DAOUser(Session session, Class entityClass) {
         super(session, entityClass);
     }
 
+    /**
+     *
+     * @param pwd mot de passe passé
+     * @return le mot de passe hashé en SHA-512
+     */
     public String hashPwd(String pwd) {
         String hash = null;
         try {
@@ -33,6 +43,12 @@ public class DAOUser extends DAOGeneric {
         return hash;
     }
 
+    /**
+     *
+     * @param username nom d'utilisateur
+     * @param pwd mot de passe
+     * @return si les paramètres correspondent
+     */
     public boolean checkCreds(String username, String pwd) {
         Criteria criteria = session.createCriteria(User.class);
         Criterion criterion = Restrictions.and(
@@ -43,6 +59,13 @@ public class DAOUser extends DAOGeneric {
         return criteria.list().isEmpty();
     }
 
+    /**
+     *
+     * @param username nom d'utilisateur
+     * @param pwd mot de passe
+     * @return un utilisateur si les paramètres passés correspondent, une liste vide sinon
+     * @throws NoSuchAlgorithmException throw de l'exception
+     */
     public User findByCreds(String username, String pwd) throws NoSuchAlgorithmException {
         Criteria criteria = session.createCriteria(User.class);
         Criterion criterion = Restrictions.and(
@@ -55,6 +78,11 @@ public class DAOUser extends DAOGeneric {
 
     }
 
+    /**
+     *
+     * @param username nom d'utilisateur
+     * @return vrai si il n'y a pas d'utilisateur correspondant au nom d'utilisateur passé en paramètre, faux sinon
+     */
     public boolean userNotExists(String username) {
         Criteria criteria = session.createCriteria(User.class);
         Criterion criterion = Restrictions.eq("username", username);

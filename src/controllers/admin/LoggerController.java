@@ -16,6 +16,10 @@ public class LoggerController {
     Logger logger;
     Session session;
 
+    /**
+     * @param logger fenêtre de log pour se connecter
+     * @param session données de session
+     */
     public LoggerController(Logger logger, Session session) {
         this.logger = logger;
         this.session = session;
@@ -32,6 +36,11 @@ public class LoggerController {
 
         logger.getRegisterBtn().addActionListener(e -> register());
     }
+
+    /**
+     * Vérifie lors de la connexion que le login correspond à un dans la base de données
+     * et que le mot de passe associé (avec un hash) est correct.
+     */
 
     public void login() throws NoSuchAlgorithmException {
         DAOUser dao = new DAOUser(session, User.class);

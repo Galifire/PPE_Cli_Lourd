@@ -1,7 +1,6 @@
 package windows.entities;
 
 import javax.swing.*;
-import java.awt.event.*;
 
 public class IdSelector extends JDialog {
     private JPanel contentPane;

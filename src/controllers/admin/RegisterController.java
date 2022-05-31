@@ -15,6 +15,11 @@ public class RegisterController {
     Register register;
     Session session;
 
+    /**
+     *
+     * @param register fenêtre register, celle pour s'enregister et créer un compte
+     * @param session données de session
+     */
     public RegisterController(Register register, Session session) {
         this.register = register;
         this.session = session;

@@ -8,6 +8,11 @@ import org.hibernate.criterion.Restrictions;
 
 public class DAOPharmacien extends DAOGeneric {
 
+    /**
+     *
+     * @param session données de session
+     * @param entityClass permet de déterminer dynamiquement la classe utilisée
+     */
     public DAOPharmacien(Session session, Class entityClass) {
         super(session, entityClass);
     }

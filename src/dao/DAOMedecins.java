@@ -14,6 +14,11 @@ import java.util.List;
 
 public class DAOMedecins extends DAOGeneric {
 
+    /**
+     *
+     * @param session données de session
+     * @param entityClass permet de déterminer dynamiquement la classe utilisée
+     */
     public DAOMedecins(Session session, Class entityClass) {
         super(session, entityClass);
     }

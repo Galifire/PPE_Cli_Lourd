@@ -9,6 +9,10 @@ import windows.admin.Main;
 
 public class App {
 
+    /**
+     *
+     * @param args fonction de base du projet
+     */
     public static void main(String[] args) {
         TestConnection t = new TestConnection();
         t.init();

@@ -8,6 +8,11 @@ import org.hibernate.criterion.Restrictions;
 
 public class DAOCommandes extends DAOGeneric {
 
+    /**
+     *
+     * @param session données de session
+     * @param entityClass permet de déterminer dynamiquement la classe utilisée
+     */
     public DAOCommandes(Session session, Class entityClass) {
         super(session, entityClass);
     }

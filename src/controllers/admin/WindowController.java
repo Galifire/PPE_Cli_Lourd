@@ -10,9 +10,6 @@ import windows.admin.*;
 import windows.entities.*;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-
-import static sun.security.krb5.Config.refresh;
 
 public class WindowController {
 
@@ -130,6 +127,7 @@ public class WindowController {
                 break;
             }
         }
+        table.repaint();
     }
 
     public void edit() {
@@ -200,58 +198,19 @@ public class WindowController {
                 break;
             }
         }
+        table.repaint();
     }
 
     public void delete() {
-        int id = Integer.parseInt(table.getValueAt(table.getSelectedRow(), 0).toString());
-        switch (window.getTableBox().getSelectedIndex()) {
-            case 1 : {
-                DAOCabinetMedical dao = new DAOCabinetMedical(session, CabinetMedical.class);
-                CabinetMedical cm = dao.findById(id);
-                dao.delete(cm);
-                break;
-            } case 2 : {
-                DAOClient dao = new DAOClient(session, Client.class);
-                Client c = dao.findById(id);
-                dao.delete(c);
-                break;
-            } case 3 : {
-                DAOCommandes dao = new DAOCommandes(session, Commandes.class);
-                Commandes c = dao.findById(id);
-                dao.delete(c);
-                break;
-            } case 4 : {
-                DAOMedecins dao = new DAOMedecins(session, Medecins.class);
-                Medecins m = dao.findById(id);
-                dao.delete(m);
-                break;
-            } case 5 : {
-                DAOMedicaments dao = new DAOMedicaments(session, Medicaments.class);
-                Medicaments m = dao.findById(id);
-                dao.delete(m);
-                break;
-            } case 6 : {
-                DAOPharmacie dao = new DAOPharmacie(session, Pharmacie.class);
-                Pharmacie p = dao.findById(id);
-                dao.delete(p);
-                break;
-            } case 7 : {
-                DAOPharmacien dao = new DAOPharmacien(session, Pharmacien.class);
-                Pharmacien p = dao.findById(id);
-                dao.delete(p);
-                break;
-            } case 8 : {
-                DAORdv dao = new DAORdv(session, Rdv.class);
-                Rdv rdv = dao.findById(id);
-                dao.delete(rdv);
-                break;
-            } case 9: {
-                DAOStocks dao = new DAOStocks(session, Stocks.class);
-                Stocks s = dao.findById(id);
-                dao.delete(s);
-                break;
-            }
+        int index = window.getTableBox().getSelectedIndex();
+        try {
+            Confirm c = new Confirm();
+            new ConfirmController(c, session, index, table);
+            c.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        table.repaint();
     }
 
     public void fillTable(JTable table) {

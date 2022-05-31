@@ -16,6 +16,14 @@ public class ConfirmController {
     int tableIndex;
     JTable table;
 
+    /**
+     *
+     * @param confirm fenêtre de confirmation
+     * @param session paramètres de session, si l'utilisateur est bien connecté
+     * @param tableIndex index de la table sélectionnée
+     * @param table structure de la table
+     */
+
     public ConfirmController(Confirm confirm, Session session, int tableIndex, JTable table) {
         this.confirm = confirm;
         this.session = session;
@@ -30,10 +38,6 @@ public class ConfirmController {
             confirm.dispose();
         });
     }
-
-    /*public void commitUpdate(int index) {
-        int id = Integer.parseInt(table.getValueAt(table.getSelectedRow(), 0).toString());
-    }*/
 
     public void commitDelete(int index) {
         int id = Integer.parseInt(table.getValueAt(table.getSelectedRow(), 0).toString());

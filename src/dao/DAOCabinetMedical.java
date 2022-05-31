@@ -10,10 +10,20 @@ import java.util.List;
 
 public class DAOCabinetMedical extends DAOGeneric {
 
+    /**
+     *
+     * @param session données de session
+     * @param entityClass permet de déterminer dynamiquement la classe utilisée
+     */
     public DAOCabinetMedical(Session session, Class entityClass) {
         super(session, entityClass);
     }
 
+    /**
+     *
+     * @param id id du paramètre
+     * @return objet de la classe
+     */
     public CabinetMedical findById(int id) {
         Criteria criteria = session.createCriteria(entityClass);
         Criterion criterion = Restrictions.eq("cabNum", id);
