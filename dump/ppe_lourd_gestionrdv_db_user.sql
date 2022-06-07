@@ -1,0 +1,4 @@
+INSERT INTO ppe_lourd_gestionrdv_db.user (id, username, role, password) VALUES (1, 'userDB', 'user', 'd93f6dc4e0418c4334920125652c978a0b25e031c401368685a24d85d760fba1b00ef2179f32c1453f7fc0cba2c1af56595f52b7b27fc9d200158409435710ec');
+INSERT INTO ppe_lourd_gestionrdv_db.user (id, username, role, password) VALUES (2, 'poukram', 'handler', '530c188f4c1166e3a7aab3b2cc99f3689fd06be415407606301d846da02c0b89cdc07041cc6ab59fdd0e48c36d7281a8e56c35b1992c88ef4146874f7e1748e3');
+INSERT INTO ppe_lourd_gestionrdv_db.user (id, username, role, password) VALUES (3, 'Galifire', 'admin', 'a6196c4863908939969bf099699c3507e4958ee71e26b364215a5e71ceaf2ea1c06a5aea59ce3aefadff0e4ac1f076be82ed74a9d937c678a59054075910806f');
+INSERT INTO ppe_lourd_gestionrdv_db.user (id, username, role, password) VALUES (4, '', null, 'cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e');
