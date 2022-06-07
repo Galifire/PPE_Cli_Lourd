@@ -86,7 +86,7 @@ public class RegisterController {
         boolean minuscule = Pattern.matches("[a-z]", pwd);
         boolean majuscule = Pattern.matches("[A-Z]", pwd);
         boolean digit = Pattern.matches("[0-9]", pwd);
-        boolean length = (pwd.length() => 8);
+        boolean length = (pwd.length() >= 8);
         if (!minuscule) {
             Erreur e = new Erreur();
             new ErreurController(e, "Un mot de passe doit contenir une minuscule");
@@ -103,6 +103,7 @@ public class RegisterController {
             Erreur e = new Erreur();
             new ErreurController(e, "Un mot de passe doit contenir au moins 8 caractères");
             e.setVisible(true);
+        }
         return (minuscule && majuscule && digit && length);
     }
 }
