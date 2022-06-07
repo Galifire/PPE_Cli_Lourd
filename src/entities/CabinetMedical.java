@@ -1,5 +1,7 @@
 package entities;
 
+import controllers.admin.ErreurController;
+import windows.admin.Erreur;
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -37,7 +39,17 @@ public class CabinetMedical implements Serializable {
     }
 
     public void setNom(String nom) {
-        this.nom = nom;
+        if (nom.length() <= 0) {
+            Erreur err = new Erreur();
+            new ErreurController(err, "le nom ne doit pas être vide");
+            err.setVisible(true);
+        } else if (nom.length() > 255) {
+            Erreur err = new Erreur();
+            new ErreurController(err, "le nom est trop long");
+            err.setVisible(true);
+        } else {
+            this.nom = nom;
+        }
     }
 
     public String getAdresse() {
@@ -45,7 +57,17 @@ public class CabinetMedical implements Serializable {
     }
 
     public void setAdresse(String adresse) {
-        this.adresse = adresse;
+        if (adresse.length() <= 0) {
+            Erreur err = new Erreur();
+            new ErreurController(err, "L'adresse ne peut être vide");
+            err.setVisible(true);
+        } else if (adresse.length() > 255) {
+            Erreur err = new Erreur();
+            new ErreurController(err, "L'adresse est trop longue");
+            err.setVisible(true);
+        } else {
+            this.adresse = adresse;
+        }
     }
 
     public Integer getEffectif() {
@@ -61,8 +83,13 @@ public class CabinetMedical implements Serializable {
     }
 
     public void setHoraires(String horaires) {
-        this.horaires = horaires;
-    }
+        if (adresse.length() > 255) {
+            Erreur err = new Erreur();
+            new ErreurController(err, "Les horaires sont trop longs");
+            err.setVisible(true);
+        } else {
+            this.horaires = horaires;
+        }}
 
     @Override
     public String toString() {

@@ -1,11 +1,8 @@
 package controllers.admin;
 
 import dao.DAOUser;
-import windows.admin.Erreur;
-import windows.admin.Logger;
+import windows.admin.*;
 import entities.User;
-import windows.admin.Register;
-import windows.admin.Window;
 import org.hibernate.Session;
 
 import javax.swing.*;
@@ -62,6 +59,9 @@ public class LoggerController {
 
     public void onCancel() {
         logger.dispose();
+        Main m = new Main();
+        new MainController(m, session);
+        m.setVisible(true);
     }
 
     public void register() {

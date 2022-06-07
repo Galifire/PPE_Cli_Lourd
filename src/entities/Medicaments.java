@@ -1,5 +1,8 @@
 package entities;
 
+import controllers.admin.ErreurController;
+import windows.admin.Erreur;
+
 import javax.persistence.*;
 
 @Entity
@@ -33,7 +36,17 @@ public class Medicaments {
     }
 
     public void setNom(String nom) {
-        this.nom = nom;
+        if (nom.length() <= 0) {
+            Erreur err = new Erreur();
+            new ErreurController(err, "le nom ne doit pas être vide");
+            err.setVisible(true);
+        } else if (nom.length() > 255) {
+            Erreur err = new Erreur();
+            new ErreurController(err, "le nom est trop long");
+            err.setVisible(true);
+        } else {
+            this.nom = nom;
+        }
     }
 
     public String getRestrictions() {
@@ -41,7 +54,13 @@ public class Medicaments {
     }
 
     public void setRestrictions(String restrictions) {
-        this.restrictions = restrictions;
+        if (restrictions.length() > 255) {
+            Erreur err = new Erreur();
+            new ErreurController(err, "La donnée rentrée est trop longue");
+            err.setVisible(true);
+        } else {
+            this.restrictions = restrictions;
+        }
     }
 
     public Integer getDelaiProduction() {

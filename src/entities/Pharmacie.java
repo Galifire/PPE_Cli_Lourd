@@ -1,5 +1,8 @@
 package entities;
 
+import controllers.admin.ErreurController;
+import windows.admin.Erreur;
+
 import javax.persistence.*;
 
 @Entity
@@ -39,7 +42,17 @@ public class Pharmacie {
     }
 
     public void setNom(String nom) {
-        this.nom = nom;
+        if (nom.length() <= 0) {
+            Erreur err = new Erreur();
+            new ErreurController(err, "le nom ne doit pas être vide");
+            err.setVisible(true);
+        } else if (nom.length() > 255) {
+            Erreur err = new Erreur();
+            new ErreurController(err, "le nom est trop long");
+            err.setVisible(true);
+        } else {
+            this.nom = nom;
+        }
     }
 
     public String getVille() {
@@ -47,7 +60,17 @@ public class Pharmacie {
     }
 
     public void setVille(String ville) {
-        this.ville = ville;
+        if (ville.length() <= 0) {
+            Erreur err = new Erreur();
+            new ErreurController(err, "Le champ ne peut pas être vide");
+            err.setVisible(true);
+        } else if (ville.length() > 255) {
+            Erreur err = new Erreur();
+            new ErreurController(err, "le nom est trop long");
+            err.setVisible(true);
+        } else {
+            this.ville = ville;
+        }
     }
 
     public String getCodePostal() {
@@ -55,7 +78,17 @@ public class Pharmacie {
     }
 
     public void setCodePostal(String codePostal) {
-        this.codePostal = codePostal;
+        if (codePostal.length() <= 0) {
+            Erreur err = new Erreur();
+            new ErreurController(err, "Le champ ne peut pas être vide");
+            err.setVisible(true);
+        } else if (codePostal.length() > 8) {
+            Erreur err = new Erreur();
+            new ErreurController(err, "le code postal est trop long");
+            err.setVisible(true);
+        } else {
+            this.codePostal = codePostal;
+        }
     }
 
     public String getAdresse() {
@@ -63,7 +96,17 @@ public class Pharmacie {
     }
 
     public void setAdresse(String adresse) {
-        this.adresse = adresse;
+        if (adresse.length() <= 0) {
+            Erreur err = new Erreur();
+            new ErreurController(err, "L'adresse ne peut pas être vide");
+            err.setVisible(true);
+        } else if (adresse.length() > 255) {
+            Erreur err = new Erreur();
+            new ErreurController(err, "L'adresse est trop longue");
+            err.setVisible(true);
+        } else {
+            this.adresse = adresse;
+        }
     }
 
     public Integer getEffectif() {

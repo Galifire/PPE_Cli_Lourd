@@ -1,5 +1,8 @@
 package entities;
 
+import controllers.admin.ErreurController;
+import windows.admin.Erreur;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -55,7 +58,17 @@ public class Commandes implements Serializable {
     }
 
     public void setDateCde(String dateCde) {
-        this.dateCde = dateCde;
+        if (dateCde.length() <= 0) {
+            Erreur err = new Erreur();
+            new ErreurController(err, "La date ne doit pas être vide");
+            err.setVisible(true);
+        } else if (dateCde.length() > 15) {
+            Erreur err = new Erreur();
+            new ErreurController(err, "La date de doit pas excéder 15 caractères");
+            err.setVisible(true);
+        } else {
+            this.dateCde = dateCde;
+        }
     }
 
     public Integer getQte() {

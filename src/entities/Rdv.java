@@ -1,5 +1,8 @@
 package entities;
 
+import controllers.admin.ErreurController;
+import windows.admin.Erreur;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -62,7 +65,17 @@ public class Rdv implements Serializable {
     }
 
     public void setDateRdv(String dateRdv) {
-        this.dateRdv = dateRdv;
+        if (dateRdv.length() <= 0) {
+            Erreur err = new Erreur();
+            new ErreurController(err, "La date ne peut pas être vide");
+            err.setVisible(true);
+        } else if (dateRdv.length() > 15) {
+            Erreur err = new Erreur();
+            new ErreurController(err, "La date est trop longue");
+            err.setVisible(true);
+        } else {
+            this.dateRdv = dateRdv;
+        }
     }
 
     public String getHeure() {
@@ -70,7 +83,17 @@ public class Rdv implements Serializable {
     }
 
     public void setHeure(String heure) {
-        this.heure = heure;
+        if (heure.length() <= 0) {
+            Erreur err = new Erreur();
+            new ErreurController(err, "L'heure ne peut pas être vide");
+            err.setVisible(true);
+        } else if (heure.length() > 15) {
+            Erreur err = new Erreur();
+            new ErreurController(err, "L'heure dépasse la limite");
+            err.setVisible(true);
+        } else {
+            this.heure = heure;
+        }
     }
 
     public Integer getDuree() {
@@ -94,6 +117,12 @@ public class Rdv implements Serializable {
     }
 
     public void setCommentaires(String commentaires) {
-        this.commentaires = commentaires;
+        if (commentaires.length() > 255) {
+            Erreur err = new Erreur();
+            new ErreurController(err, "Le commentaire rentré est trop long");
+            err.setVisible(true);
+        } else {
+            this.commentaires = commentaires;
+        }
     }
 }

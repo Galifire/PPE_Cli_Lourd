@@ -1,9 +1,13 @@
 package controllers.create;
 
+import controllers.admin.ErreurController;
 import dao.DAOCabinetMedical;
 import entities.CabinetMedical;
 import org.hibernate.Session;
+import windows.admin.Erreur;
 import windows.entities.WindowCabinetMedical;
+
+import java.sql.SQLException;
 
 public class CreateCabinetMedicalController {
 
