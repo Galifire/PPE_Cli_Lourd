@@ -1,5 +1,8 @@
 package entities;
 
+import controllers.admin.ErreurController;
+import windows.admin.Erreur;
+
 import javax.persistence.*;
 
 @Entity
@@ -33,7 +36,17 @@ public class User {
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        if (username.length() <= 0) {
+            Erreur err = new Erreur();
+            new ErreurController(err, "Le nom d'utilisateur ne peut pas être vide");
+            err.setVisible(true);
+        } else if (username.length() > 255) {
+            Erreur err = new Erreur();
+            new ErreurController(err, "Le nom d'utilisateur est trop long");
+            err.setVisible(true);
+        } else {
+            this.username = username;
+        }
     }
 
     public String getRole() {
@@ -41,7 +54,13 @@ public class User {
     }
 
     public void setRole(String role) {
-        this.role = role;
+        if (role.length() > 255) {
+            Erreur err = new Erreur();
+            new ErreurController(err, "Le nom rôle est trop long");
+            err.setVisible(true);
+        } else {
+            this.username = role;
+        }
     }
 
     public String getPassword() {
