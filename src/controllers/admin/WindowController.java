@@ -8,8 +8,10 @@ import entities.*;
 import org.hibernate.Session;
 import windows.admin.*;
 import windows.entities.*;
+import pdf.*;
 
 import javax.swing.*;
+import java.io.IOException;
 
 public class WindowController {
 
@@ -43,6 +45,14 @@ public class WindowController {
         window.getEditButton().addActionListener(e -> edit());
 
         window.getDeleteButton().addActionListener(e -> delete());
+
+        window.getPdfButton().addActionListener(e -> {
+            try {
+                makePdf();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
     }
 
     /**
@@ -234,6 +244,16 @@ public class WindowController {
             e.printStackTrace();
         }
         table.repaint();
+    }
+
+    public void makePdf() throws IOException {
+        int index = window.getTableBox().getSelectedIndex();
+        int id = Integer.parseInt(table.getValueAt(table.getSelectedRow(), 0).toString());
+        if (index == 3 && !(id == 0)) {
+            DAOCommandes dao = new DAOCommandes(session, Commandes.class);
+            Commandes c = dao.findById(id);
+            CreatePdf.create(c);
+        }
     }
 
     /**

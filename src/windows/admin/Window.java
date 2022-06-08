@@ -12,6 +12,7 @@ public class Window extends JDialog {
     private JButton addButton;
     private JButton editButton;
     private JButton deleteButton;
+    private JButton pdfButton;
 
     public Window() {
         setContentPane(contentPane);
@@ -55,6 +56,8 @@ public class Window extends JDialog {
     public JButton getDeleteButton() {
         return this.deleteButton;
     }
+
+    public JButton getPdfButton() { return this.pdfButton; }
 
     public static void main(String[] args) {
         Window dialog = new Window();
